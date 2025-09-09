@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <header className="content-grid">
+        <header>
           <NavBar />
         </header>
         {children}
