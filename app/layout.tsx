@@ -21,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
+        className={`${montserratSans.variable} antialiased`}
       >
-        <header>
+        <header className="content-grid">
           <NavBar />
         </header>
         {children}
