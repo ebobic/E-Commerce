@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserratSans.variable} ${montserratSans.variable} antialiased content-grid`}
         suppressHydrationWarning
       >
         <header>
