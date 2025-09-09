@@ -5,7 +5,7 @@ export default function NavBar() {
     return (
         <nav className="breakout flex items-center justify-between">
             <Link href={"/"} className="flex gap-4 items-center justify-between">
-            <h2 className="text-3xl font-bold text-blue-900">Furniture</h2>
+            <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
             </Link>
 
             <ul className="flex">
