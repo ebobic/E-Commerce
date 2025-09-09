@@ -4,17 +4,17 @@ import data from "@/lib/data/pages.json";
 
 export default function NavBar() {
     return (
-        <nav className="breakout flex items-center justify-around px-[1.6rem] py-[2rem] bg-white">
+        <nav className="breakout flex py-8 items-center justify-between bg-white">
             <Link href={"/"}>
             <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
             </Link>
 
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-8 items-center justify-between">
             <ul className="flex">
                 {data["pages"].map((link, index) => (
                 <li key={index}>
                     <Link
-                        className="hidden text-blue-900 hover:bg-blue-100 hover:text-neutral-800 md:flex md:px-[1.6rem]"
+                        className="hidden text-neutral-800 hover:text-blue-900 md:flex md:px-8"
                         href={link.href}
                     >
                         {link.label}
@@ -23,7 +23,7 @@ export default function NavBar() {
                 ))}
             </ul>
             
-            <div className="flex gap-2">
+            <div className="flex gap-4">
             <Link href={"#"}>
                 <Image
                     src="/search.svg"
