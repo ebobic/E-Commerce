@@ -4,6 +4,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3000` to see the application in action.
+
 ```bash
 npm run dev
 # or
