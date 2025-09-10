@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserratSans.variable} antialiased`}
+        className={`${montserratSans.variable} antialiased content-grid`}
       >
-        <header className="content-grid">
+        <header>
           <NavBar />
         </header>
         {children}
