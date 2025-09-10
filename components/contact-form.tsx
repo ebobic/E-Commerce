@@ -19,11 +19,11 @@ export default function ContactForm() {
         <section className="grid grid-cols-1 pb-10 w-[70vh] justify-self-center">
             <div className="w-[50vh] pt-6 pb-2 text-center justify-self-center">
                 <h2 className="pt-6 text-2xl font-bold">Get In Touch With Us</h2>
-                <p className="p-2 text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, non dicta? Dolorum facilis, voluptates provident dolores natus porro adipisci quasi culpa.</p>
+                <p className="p-2 text-sm w-4/5 sm:w-full">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, non dicta? Dolorum facilis, voluptates provident dolores natus porro adipisci quasi culpa.</p>
             </div>
             
             <Form action={(handleSubmit)} className='grid place-content-center'>
-                <div className="flex gap-1">
+                <div className="grid gap-1 sm:flex">
                     <input type="text"
                         className="mb-1 px-2 rounded-lg bg-blue-100"
                         name="name"
