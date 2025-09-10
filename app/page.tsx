@@ -1,3 +1,9 @@
+import BenefitsBanner from "@/components/BenefitsBanner";
+
 export default function Home() {
-  return 
+  return (
+    <main>
+      <BenefitsBanner/>
+    </main>
+  )
 }
