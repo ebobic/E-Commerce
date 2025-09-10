@@ -1,5 +1,9 @@
-import Image from "next/image";
-import { fetchProductById, fetchProductsData, fetchSearchProducts } from "../lib/data/product-data";
+import BenefitsBanner from "@/components/BenefitsBanner";
 
-export default async function Home() {
+export default function Home() {
+  return (
+    <main>
+      <BenefitsBanner/>
+    </main>
+  )
 }
