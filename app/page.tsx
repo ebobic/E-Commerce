@@ -1,9 +1,16 @@
+
+import Hero from "@/components/hero";
+
 import BenefitsBanner from "@/components/BenefitsBanner";
+
 
 export default function Home() {
   return (
     <main>
-      <BenefitsBanner/>
+
+      <Hero />
+    <BenefitsBanner/>
+
     </main>
-  )
+    );
 }
