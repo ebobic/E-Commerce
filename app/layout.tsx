@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${montserratSans.variable} antialiased`}
+        suppressHydrationWarning
       >
         <header className="content-grid">
           <NavBar />
