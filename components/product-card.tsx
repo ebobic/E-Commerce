@@ -42,7 +42,7 @@ export default async function ProductCard(product: Product) {
         <h3 className="h-[48px] overflow-hidden text-xs line-clamp-3 p-1">{product.description}</h3>
       </div>
       {/* Buy Button */}
-      <div className="w-full flex justify-end-safe rounded-b-2xl p-2">
+      <div className="w-full flex justify-end-safe rounded-b-2xl p-2 pb-1">
         <button
           type="button"
           className="px-3 py-0.5 z-50 text-white bg-black rounded-full text-lg font-extralight cursor-pointer"
