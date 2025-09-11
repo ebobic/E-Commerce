@@ -15,6 +15,22 @@ export default function NavBar() {
             </Link>
 
             <div className="flex gap-8 items-center justify-between">
+
+                {/* desktop nav */}
+                <ul className="flex">
+                    {data["pages"].map((link, index) => (
+                    <li key={index}>
+                        <Link
+                            className="hidden text-neutral-800 hover:text-blue-900 md:flex md:px-8"
+                            href={link.href}
+                        >
+                            {link.label}
+                        </Link>
+                    </li>
+                    ))}
+                </ul>
+
+                {/* mobile nav*/}
                 {menuOpen && (
                     <ul className="flex flex-col absolute top-20 left-0 w-full px-4 bg-white font-semibold text-neutral-800 md:flex-row md:gap-8 md:static md:top-auto md:left-auto md:font-normal">
                         {data["pages"].map((link, index) => (
@@ -34,7 +50,10 @@ export default function NavBar() {
                     </ul>
                 )}
                 
+                {/* link icons + hamburger menu button */}
                 <div className="flex gap-4">
+
+                    {/* search */}
                     <Link href={"#"}>
                         <div className="w-[15px] h-[15px] relative">
                         <Image
@@ -45,6 +64,8 @@ export default function NavBar() {
                         />
                         </div>
                     </Link>
+
+                    {/* user */}
                     <Link href={"#"}>
                         <div className="w-[15px] h-[15px] relative">
                         <Image
@@ -55,6 +76,8 @@ export default function NavBar() {
                         />
                         </div>
                     </Link>
+                    
+                    {/* shopping cart */}
                     <Link href={"#"}>
                         <div className="w-[15px] h-[15px] relative">
                         <Image
@@ -66,6 +89,7 @@ export default function NavBar() {
                         </div>
                     </Link>
                     
+                    {/* hamburger menu toggle */}
                     <button 
                         className="w-[15px] h-[15px] relative md:hidden"
                         onClick={() => setMenuOpen(!menuOpen)}
@@ -77,7 +101,6 @@ export default function NavBar() {
                             objectFit="contain"
                         />
                     </button>
-
                 </div>
             </div>
         </nav>
