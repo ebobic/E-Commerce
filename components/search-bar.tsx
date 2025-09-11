@@ -1,16 +1,65 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-export default function SearchBar() {
+interface SearchBarProps {
+    onSearchToggle?: (isOpen: boolean) => void;
+}
+
+export default function SearchBar({ onSearchToggle }: SearchBarProps) {
     const [searchOpen, setSearchOpen] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+
+    // MOBILE/TABLET: Trigger keyboard when search dropdown opens
+    useEffect(() => {
+        if (searchOpen && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [searchOpen]);
+
+    // ALL DEVICES: Backdrop effects when search is open/closed
+    useEffect(() => {
+        const mainContent = document.querySelector('main') || document.querySelector('.content-grid') || document.body;
+        
+        const applyBackdropEffects = () => {
+            mainContent.style.filter = 'brightness(0.5)';
+            // Prevent scrolling on all devices
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.height = '100%';
+        };
+        
+        const removeBackdropEffects = () => {
+            mainContent.style.filter = 'brightness(1)';
+            // Restore scrolling
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.height = '';
+        };
+        
+        if (searchOpen) {
+            applyBackdropEffects();
+        } else {
+            removeBackdropEffects();
+        }
+        
+        // If user leaves page while search is open, fix the page back to normal
+        return removeBackdropEffects;
+    }, [searchOpen]);
 
     return (
         <>
             {/* Search Button */}
             <button 
-                onClick={() => setSearchOpen(!searchOpen)}
+                onClick={() => {
+                    const newState = !searchOpen;
+                    setSearchOpen(newState);
+                    onSearchToggle?.(newState);
+                }}
                 className="w-[15px] h-[15px] relative"
             >
                 <Image
@@ -21,9 +70,14 @@ export default function SearchBar() {
                 />
             </button>
 
+            {/* MOBILE/TABLET: Block clicks on navbar when search is open */}
+            {searchOpen && (
+                <div className="fixed inset-0 z-40 md:hidden" />
+            )}
+
             {/* Search Dropdown */}
             {searchOpen && (
-                <div className="absolute top-full left-0 w-full bg-white shadow-lg z-50">
+                <div className="absolute top-full left-0 w-full bg-white z-50">
                     <div className="breakout py-3">
                         <div className="flex items-center px-4 py-3">
                             {/* Search Icon */}
@@ -38,17 +92,20 @@ export default function SearchBar() {
                             </div>
                             
                             {/* Search Input */}
-                            <input
-                                type="text"
-                                placeholder="Search for a product..."
-                                className="flex-1 bg-transparent text-gray-600 placeholder-gray-400 focus:outline-none text-sm font-medium"
-                                autoFocus
-                            />
+                                    <input
+                                        ref={inputRef}
+                                        type="text"
+                                        placeholder="Search for a product..."
+                                        className="flex-1 bg-transparent text-gray-600 placeholder-gray-600 focus:outline-none text-base font-medium"
+                                    />
                             
                             {/* Close Button */}
                             <button
-                                onClick={() => setSearchOpen(false)}
-                                className="w-5 h-5 relative ml-3 text-gray-400 hover:text-gray-600"
+                                onClick={() => {
+                                    setSearchOpen(false);
+                                    onSearchToggle?.(false);
+                                }}
+                                className="w-5 h-5 relative ml-3 text-gray-600 hover:text-gray-800"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
