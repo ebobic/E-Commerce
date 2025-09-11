@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${montserratSans.variable} antialiased content-grid`}
    suppressHydrationWarning
       >
-        <header>
+        <header className= "">
           <NavBar />
         </header>
         {children}

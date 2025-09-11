@@ -7,12 +7,12 @@ export default async function FeaturedProductList() {
   const products: Product[] = response.products || [];
 
   return (
-    <section className="flex flex-col bg-white items-center p-10 rounded-md shadow-md">
+    <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
 
       <h2 className="text-center text-4xl font-jersey font-medium mb-4">
           Featured Products
         </h2>
-      <ul className="grid gap-x-8 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-4 place-items-center">
+      <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 p-4 place-items-center">
         {products.map((product: Product) => (
           <ProductCard key={product.id} {...product} />
         ))}
