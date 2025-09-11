@@ -1,4 +1,5 @@
 import NavBar from "@/components/nav-bar";
+import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
@@ -21,14 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-
         className={`${montserratSans.variable} antialiased content-grid`}
-   suppressHydrationWarning
+        suppressHydrationWarning
       >
         <header className= "">
           <NavBar />
         </header>
         {children}
+        <Footer />
       </body>
     </html>
   );

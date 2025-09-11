@@ -9,7 +9,7 @@ export default function Hero() {
       }}
     >
       {/* Content box with hero text and CTA */}
-      <div className="content-box bg-blue-100 rounded-lg p-4 md:p-12 w-full max-w-[85vw] md:max-w-[643px] h-auto md:h-[443px] flex flex-col justify-center items-center md:items-start mx-auto md:mx-0 md:ml-150">
+      <div className="content-box bg-blue-100 rounded-lg p-4 md:p-12 w-full max-w-[85vw] md:max-w-[643px] h-auto md:h-[443px] flex flex-col justify-center items-center md:items-start mx-auto md:mx-0 md:ml-[150px]">
         {/* New arrival */}
         <p className="text-neutral-800 text-xs md:text-base mb-2 font-semibold tracking-[1px] md:tracking-[3px] text-center md:text-left">New arrival</p>
         
