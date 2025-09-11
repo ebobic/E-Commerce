@@ -14,7 +14,7 @@ export default function NavBar() {
                     {data["pages"].map((link, index) => (
                     <li key={index}>
                         <Link
-                            className="flex items-center justify-between p-2 hover:text-blue-900"
+                            className="flex items-center justify-between py-2 hover:text-blue-900"
                             href={link.href}
                         >
                             {link.label}
