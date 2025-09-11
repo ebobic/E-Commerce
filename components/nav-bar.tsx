@@ -4,12 +4,15 @@ import Link from "next/link"
 import Image from "next/image";
 import data from "@/lib/data/pages.json";
 import { useState } from "react";
+import SearchBar from "./search-bar";
 
 export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
 
     return (
-        <nav className="breakout flex py-8 items-center justify-between bg-white">
+        <div className="relative">
+        <nav className="breakout flex py-8 items-center justify-between bg-white relative z-50">
             <Link href={"/"}>
                 <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
             </Link>
@@ -54,16 +57,10 @@ export default function NavBar() {
                 <div className="flex gap-4">
 
                     {/* search */}
-                    <Link href={"#"}>
-                        <div className="w-[15px] h-[15px] relative">
-                        <Image
-                            src="/search.svg"
-                            alt="Search Icon"
-                            layout="fill"
-                            objectFit="contain"
-                        />
-                        </div>
-                    </Link>
+                    <SearchBar onSearchToggle={(isOpen) => {
+                        setSearchOpen(isOpen);
+                        if (isOpen) setMenuOpen(false); // Close mobile menu when search opens
+                    }} />
 
                     {/* user */}
                     <Link href={"#"}>
@@ -92,7 +89,10 @@ export default function NavBar() {
                     {/* hamburger menu toggle */}
                     <button 
                         className="w-[15px] h-[15px] relative md:hidden"
-                        onClick={() => setMenuOpen(!menuOpen)}
+                        onClick={() => {
+                            setMenuOpen(!menuOpen);
+                            if (!menuOpen) setSearchOpen(false); // Close search when mobile menu opens
+                        }}
                     >
                         <Image
                             src="/menu.svg"
@@ -104,5 +104,7 @@ export default function NavBar() {
                 </div>
             </div>
         </nav>
+        
+        </div>
     )
 }
