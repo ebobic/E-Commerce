@@ -21,7 +21,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
 
     // ALL DEVICES: Backdrop effects when search is open/closed
     useEffect(() => {
-        const mainContent = document.querySelector('main') || document.querySelector('.content-grid') || document.body;
+        const mainContent = document.querySelector('main') || document.body;
         
         const applyBackdropEffects = () => {
             mainContent.style.filter = 'brightness(0.5)';
@@ -78,7 +78,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
             {/* Search Dropdown */}
             {searchOpen && (
                 <div className="absolute top-full left-0 w-full bg-white z-50">
-                    <div className="breakout py-3">
+                    <div className="py-3">
                         <div className="flex items-center px-4 py-3">
                             {/* Search Icon */}
                             <div className="w-5 h-5 relative mr-3">
