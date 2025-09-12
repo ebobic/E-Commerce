@@ -32,24 +32,28 @@ export default async function ProductCard(product: Product) {
         />
       </div>
       {/* Product Details */}
-      <div className="w-full h-1/3 rounded-b-4xl flex-1 bg-white p-6">
-        <div >
-        {/* Product Name */}
-        <div className="flex justify-between items-center mb-1">
-          <h4 className="text-sm font-extrabold">{product.title}</h4>
-          <span className="text-sm font-normal">${product.price}</span>
+      <div className="w-full h-1/3 rounded-b-4xl flex-1 bg-white p-4">
+        <div>
+          {/* Product Name */}
+          <div className="flex justify-between gap-x-4 items-center p-1">
+            <h4 className="text-xs font-extrabold overflow-hidden text-ellipsis whitespace-nowrap">
+              {product.title}
+            </h4>
+            <span className="text-xs font-normal">${product.price}</span>
+          </div>
+          <h3 className="h-[72px] overflow-hidden text-xs line-clamp-4 p-2">
+            {product.description}
+          </h3>
         </div>
-        <h3 className="h-[38px] overflow-hidden text-xs line-clamp-2 p-1">{product.description}</h3>
-      </div>
-      {/* Buy Button */}
-      <div className="w-full flex justify-end-safe rounded-b-2xl p-2 pb-1">
-        <button
-          type="button"
-          className="px-3 py-0.5 z-50 text-white bg-black rounded-full text-lg font-extralight cursor-pointer"
-        >
-          <span className="text-xs">Buy</span>
-        </button>
-      </div>
+        {/* Buy Button */}
+        <div className="absolute bottom-3 right-3">
+          <button
+            type="button"
+            className="flex items-center justify-center px-3 py-2 z-50 text-white bg-black rounded-4xl text-lg font-extralight cursor-pointer"
+          >
+            <span className="text-xs">Buy</span>
+          </button>
+        </div>
       </div>
     </article>
   );
