@@ -5,10 +5,40 @@ import Image from "next/image";
 import data from "@/lib/data/pages.json";
 import { useState } from "react";
 import SearchBar from "./search-bar";
+import { usePathname } from "next/navigation";
+
+type PageLink = {
+    href: string;
+    label: string;
+};
 
 export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+    const pathname = usePathname();
+
+    // ids for anchor links on start page
+    const anchorLinks = {
+        Home: "#home",
+        About: "#about",
+        Contact: "#contact",
+    };
+
+    const renderLink = (link: PageLink) => {
+        // if on start page and link is Home, About or Contact, render anchor link
+        if (pathname === "/" &&
+            (link.label === "Home" || link.label === "About" || link.label === "Contact")
+        ) {
+            return (
+                <Link href={anchorLinks[link.label]}>{link.label}</Link>
+            );
+        } else {
+            // otherwise normal navigation link
+            return (
+                <Link href={link.href}>{link.label}</Link>
+            );
+        }
+    };
 
     return (
         <div className="relative">
@@ -20,16 +50,9 @@ export default function NavBar() {
             <div className="flex gap-8 items-center justify-between">
 
                 {/* desktop nav */}
-                <ul className="flex">
+                <ul className="hidden md:flex gap-10">
                     {data["pages"].map((link, index) => (
-                    <li key={index}>
-                        <Link
-                            className="hidden text-neutral-800 hover:text-blue-900 md:flex md:px-8"
-                            href={link.href}
-                        >
-                            {link.label}
-                        </Link>
-                    </li>
+                    <li key={index} className="text-neutral-800 hover:text-blue-900">{renderLink(link)}</li>
                     ))}
                 </ul>
 
@@ -37,17 +60,10 @@ export default function NavBar() {
                 {menuOpen && (
                     <ul className="flex flex-col absolute top-20 left-0 w-full px-4 bg-white font-semibold text-neutral-800 md:flex-row md:gap-8 md:static md:top-auto md:left-auto md:font-normal">
                         {data["pages"].map((link, index) => (
-                        <li key={index}>
-                            <Link
-                                className="flex items-center justify-between py-2 hover:text-blue-900"
-                                href={link.href}
-                            >
-                                {link.label}
-                                <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor" className="w-3 h-3 md:hidden">
+                        <li key={index} className="flex items-center justify-between py-2 text-neutral-800 hover:text-blue-900">{renderLink(link)}
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor" className="w-3 h-3 md:hidden">
                                 <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                             </svg>
-                            </Link>
-                            
                         </li>
                         ))}
                     </ul>

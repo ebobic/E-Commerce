@@ -16,7 +16,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="grid grid-cols-1 pb-10 justify-self-center">
+    <section id="contact" className="grid grid-cols-1 pb-10 justify-self-center">
       <div className="w-full pt-6 pb-2 text-center justify-self-center w-9/10 md:w-7/10 lg:w-6/10 xl:w-5/10">
         <h2 className="pt-6 text-2xl font-bold">Get In Touch With Us</h2>
         <p className="m-auto p-2 text-sm break-keep">
