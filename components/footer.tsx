@@ -29,7 +29,7 @@ export default function Footer() {
     return (
         <footer className="bg-blue-950 text-white">
             {/* Main Footer Content */}
-            <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="px-6 py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
                     {/* Left Column - Company Info & Social */}
                     <div className="space-y-8">
@@ -133,7 +133,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-blue-800/50">
-                    <div className="max-w-7xl mx-auto px-6 py-6">
+                    <div className="px-6 py-6">
                         <div className="flex justify-center">
                             <p className="text-sm text-white">
                                 © 2025 MegaMart. All rights reserved.

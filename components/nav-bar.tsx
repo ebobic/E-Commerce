@@ -12,7 +12,7 @@ export default function NavBar() {
 
     return (
         <div className="relative">
-        <nav className="breakout flex py-8 items-center justify-between bg-white relative z-50">
+        <nav className="flex py-8 items-center justify-between bg-white relative z-50 px-6">
             <Link href={"/"}>
                 <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
             </Link>
