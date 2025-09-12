@@ -7,7 +7,7 @@ import AboutUs from "@/components/AboutUs";
 
 export default function Home() {
   return (
-    <main>
+    <main id="home">
       <Hero />
       <BenefitsBanner />
       <FeaturedProductList />
