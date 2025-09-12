@@ -60,7 +60,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                     setSearchOpen(newState);
                     onSearchToggle?.(newState);
                 }}
-                className="w-[15px] h-[15px] relative"
+                className="w-[25px] h-[25px] relative"
             >
                 <Image
                     src="/search.svg"
