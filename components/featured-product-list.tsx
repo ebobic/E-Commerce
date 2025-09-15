@@ -2,9 +2,13 @@ import { fetchProductsData } from "@/lib/data/product-data";
 import ProductCard from "./product-card";
 import { Product } from "@/lib/interfaces/products";
 
-export default async function FeaturedProductList() {
-  const limit = 10
-  const skip = 0
+export default async function FeaturedProductList({
+  limit,
+  skip,
+}: {
+  limit: number;
+  skip: number;
+}) {
 
   const response = await fetchProductsData(limit, skip);
   const products: Product[] = response.products || [];

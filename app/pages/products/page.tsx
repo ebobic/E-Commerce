@@ -9,11 +9,13 @@ searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
 
   const { search } = await searchParams
+  const limit = 60;
+  const skip = 30;
 
     return (
         <div>
             <SearchBarProducts />
-            {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList />}
+            {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip} />}
         </div>
     )
 }
