@@ -12,19 +12,19 @@ export default function NavBar() {
 
     return (
         <div className="relative">
-        <nav className="flex py-8 items-center justify-between bg-white relative z-50 px-6">
+        <nav className="flex py-6 lg:py-4 items-center justify-between bg-white relative z-50 px-6">
             <Link href={"/"}>
                 <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
             </Link>
 
-            <div className="flex gap-8 items-center justify-between">
+            <div className="flex gap-6 lg:gap-12 items-center justify-between">
 
                 {/* desktop nav */}
                 <ul className="flex">
                     {data["pages"].map((link, index) => (
                     <li key={index}>
                         <Link
-                            className="hidden text-neutral-800 hover:text-blue-900 md:flex md:px-8"
+                            className="hidden text-neutral-800 hover:text-blue-900 md:flex md:px-6 lg:px-8"
                             href={link.href}
                         >
                             {link.label}
