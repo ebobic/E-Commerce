@@ -5,17 +5,15 @@ import ProductsList from "@/components/products-list"
 export default async function Products({
   searchParams,
 }: {
-//   searchParams: Promise<{ [key: string]: string | undefined }>
-  searchParams: Promise<{ [key: string]: string }>
+searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
 
-  const { query } = await searchParams
+  const { search } = await searchParams
 
     return (
         <div>
             <SearchBarProducts />
-            {/* <ProductsList searchQuery={query} /> */}
-            {(query && query !== "") ?<ProductsList searchQuery={query}/>: <FeaturedProductList />}
+            {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList />}
         </div>
     )
 }
