@@ -2,11 +2,9 @@ import { fetchSearchProducts } from "@/lib/data/product-data";
 import ProductCard from "./product-card";
 import { Product } from "@/lib/interfaces/products";
 
-// export default async function ProductsList({searchQuery}: {searchQuery: string}) {
-export default async function ProductsList() {
-  const searchQuery = "red"
+export default async function ProductsList({searchQuery}: {searchQuery: string}) {
 
-  const response = await fetchSearchProducts("red");
+  const response = await fetchSearchProducts(searchQuery);
   const products: Product[] = response.products || [];
 
   console.log(products)
