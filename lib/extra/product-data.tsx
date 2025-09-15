@@ -28,6 +28,12 @@ export async function fetchProductsByCategory(category: string) {
   return { products, total };
 }
 
+export async function fetchCategoryList() {
+  const response = await fetch(`https://dummyjson.com/products/category-list`);
+  const categoryList: string[] = await response.json();
+  return categoryList;
+}
+
 export async function fetchAllCategories() {
   const response = await fetch(`https://dummyjson.com/products/categories`);
   const categories: string[] = await response.json();
