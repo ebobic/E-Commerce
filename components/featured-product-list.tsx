@@ -11,11 +11,8 @@ export default async function FeaturedProductList() {
 
   return (
     <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
-
-      <h2 className="text-center text-4xl font-jersey font-medium mb-4">
-          Featured Products
-        </h2>
       <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
+
         {products.map((product: Product) => (
           <ProductCard key={product.id} {...product} />
         ))}
