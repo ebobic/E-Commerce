@@ -4,8 +4,8 @@ import Link from "next/link"
 import data from "@/lib/data/pages.json";
 import { useState } from "react";
 import RenderLink from "./render-link";
-import MobileMenu from "./MobileMenu";
-import NavBarIcons from "./NavBarIcons";
+import MobileMenu from "./mobile-menu";
+import NavBarIcons from "./nav-bar-icons";
 
 
 export default function NavBar() {
