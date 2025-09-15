@@ -1,7 +1,7 @@
 import { Product, ProductsResponse } from "../interfaces/products";
 
-export async function fetchProductsData() {
-  const response = await fetch(`https://dummyjson.com/products`);
+export async function fetchProductsData(limit:number, skip:number) {
+  const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
   const { products, total }: ProductsResponse = await response.json();
   return { products, total };
 }
