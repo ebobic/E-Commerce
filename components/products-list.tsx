@@ -1,16 +1,10 @@
-import { fetchProductsData } from "@/lib/data/product-data";
+import { fetchSearchProducts } from "@/lib/data/product-data";
 import ProductCard from "./product-card";
 import { Product } from "@/lib/interfaces/products";
 
-export default async function FeaturedProductList({
-  limit,
-  skip,
-}: {
-  limit: number;
-  skip: number;
-}) {
+export default async function ProductsList({searchQuery}: {searchQuery: string}) {
 
-  const response = await fetchProductsData(limit, skip);
+  const response = await fetchSearchProducts(searchQuery);
   const products: Product[] = response.products || [];
 
   return (
