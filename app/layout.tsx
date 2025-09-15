@@ -1,4 +1,4 @@
-import NavBar from "@/components/nav-bar";
+import NavBar from "@/components/Nav/NavBar";
 import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
