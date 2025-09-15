@@ -5,7 +5,7 @@ import Image from "next/image";
 import data from "@/lib/data/pages.json";
 import { useState } from "react";
 import SearchBar from "../search-bar";
-import { RenderLink } from "./render-link";
+import RenderLink from "./render-link";
 
 
 export default function NavBar() {

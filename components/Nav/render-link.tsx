@@ -6,21 +6,26 @@ type PageLink = {
   label: string;
 };
 
-export function RenderLink(link: PageLink) {
-  const pathname = usePathname();
+export default function RenderLink(link: PageLink) {
+    const pathname = usePathname();
 
-  const anchorLinks: Record<string, string> = {
-    Home: "#home",
-    About: "#about",
-    Contact: "#contact",
-  };
+    const anchorLinks: Record<string, string> = {
+        Home: "#home",
+        About: "#about",
+        Contact: "#contact",
+    };
 
-  if (
-    pathname === "/" &&
-    (link.label === "Home" || link.label === "About" || link.label === "Contact")
-  ) {
-    return <Link href={anchorLinks[link.label]}>{link.label}</Link>;
-  }
-
-  return <Link href={link.href}>{link.label}</Link>;
+    // if on start page and link is Home, About or Contact, render anchor link
+    if (pathname === "/" &&
+        (link.label === "Home" || link.label === "About" || link.label === "Contact")
+    ) {
+        return (
+            <Link href={anchorLinks[link.label]}>{link.label}</Link>
+        );
+    } else {
+        // otherwise normal navigation link
+        return (
+            <Link href={link.href}>{link.label}</Link>
+        );
+    }
 }
