@@ -1,9 +1,19 @@
+import SearchBarProducts from "@/components/search-bar-products"
 import FeaturedProductList from "@/components/featured-product-list"
+import ProductsList from "@/components/products-list"
 
-export default function Products() {
+export default async function Products({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>
+}) {
+
+  const { query } = await searchParams
+
     return (
         <div>
-            <FeaturedProductList />
+            <SearchBarProducts />
+            {(query && query !== "") ?<ProductsList searchQuery={query}/>: <FeaturedProductList />}
         </div>
     )
 }
