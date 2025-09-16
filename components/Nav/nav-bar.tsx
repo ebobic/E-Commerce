@@ -14,7 +14,7 @@ export default function NavBar() {
 
     return (
         <div className="relative">
-            <nav className="flex items-center justify-between py-8 bg-white relative z-50 px-6">
+            <nav className="flex items-center justify-between py-8 bg-white fixed top-0 left-0 right-0 z-50 px-6">
                 
                 {/* ul/li nav */}
                 <div className="hidden md:flex text-1xl font-semibold md:justify-start md:w-1/3">
