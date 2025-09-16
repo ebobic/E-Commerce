@@ -7,15 +7,19 @@ interface FeaturedProductListProps {
   skip: number;
   category?: string;
   number?: number;
+  id?: number
 }
 
-export default async function FeaturedProductList({ limit, skip, category, number }: FeaturedProductListProps) {
+export default async function FeaturedProductList({ limit, skip, category, number, id }: FeaturedProductListProps) {
 
   const response = await fetchProductsData(limit, skip);
   let products: Product[] = response.products || [];
 
   if (category) {
     products = products.filter(product => product.category === category)
+    if (id !== undefined) {
+      products = products.filter(product => product.id !== id);
+    }
     products = products.slice(0, 4);
   }
 

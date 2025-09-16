@@ -11,7 +11,7 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
         <section className="flex flex-col relative items-center p-6 rounded-md shadow-md max-w-0xl mx-auto">
         {<ProductDetailsCard {...productData} />}
         </section>
-        <SimilarProducts category={productData.category}/>
+        <SimilarProducts category={productData.category} id={productData.id}/>
     </>
   );
 }
