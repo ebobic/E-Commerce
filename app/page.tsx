@@ -1,9 +1,9 @@
 import Hero from "@/components/hero";
-import BenefitsBanner from "@/components/BenefitsBanner";
+import BenefitsBanner from "@/components/benefits-banner";
 import FeaturedProduct from "@/components/featured-products";
 import FeaturedProductList from "@/components/featured-product-list";
 import ContactForm from "@/components/contact-form";
-import AboutUs from "@/components/AboutUs";
+import AboutUs from "@/components/about-us";
 
 export default function Home() {
   return (
@@ -11,7 +11,6 @@ export default function Home() {
       <Hero />
       <BenefitsBanner />
       <FeaturedProduct />
-      <FeaturedProductList />
       <AboutUs/>
       <ContactForm />
     </main>
