@@ -30,10 +30,6 @@ export interface ProductsResponse {
     limit: number;
 }
 
-export interface CategoriesResponse {
-    categories: Category[];
-}
-
 export interface Category {
     slug: string;
     name: string;

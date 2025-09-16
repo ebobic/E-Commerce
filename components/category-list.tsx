@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { fetchAllCategories } from "@/lib/data/product-data";
-import { CategoriesResponse, Category } from "@/lib/interfaces/products";
+import { Category } from "@/lib/interfaces/products";
 
 export default async function CategoryList() {
     const response = await fetchAllCategories();
