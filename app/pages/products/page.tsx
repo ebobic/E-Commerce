@@ -1,6 +1,6 @@
 
-import { fetchAllCategories } from "@/lib/data/product-data";
-import { Category } from "@/lib/interfaces/products";
+import { fetchProductsByCategory } from "@/lib/data/product-data";
+import { ProductsResponse } from "@/lib/interfaces/products";
 
 import SearchBarProducts from "@/components/search-bar-products"
 import FeaturedProductList from "@/components/featured-product-list"
@@ -8,20 +8,27 @@ import ProductsList from "@/components/products-list"
 import CategoryList from "@/components/category-list"
 
 export default async function Products({
-  searchParams,
+  categoryQuery,
+  searchParams
 }: {
-  searchParams: Promise<{ [key: string]: string | undefined }>
+  categoryQuery: string
+  searchParams: Promise<{ [key: string]: string }>
 }) {
 
   // Fetch categories
-  const response = await fetchAllCategories();
-  const results: Category[] = response || [];
+  // const cat = "Beauty"
+  const response = await fetchProductsByCategory(categoryQuery);
+  // const results: ProductsResponse[] = response || [];
 
-  const { search, category } = await searchParams
+  // console.log(`Cat: ${cat}`)
+  // console.log(`Category: ${category}`)
+  console.log(`categoryQuery: ${categoryQuery}`)
+  console.log(`searchParams: ${searchParams}`)
+  console.log(`Response: ${response.products}`)
+
+  const { category, search } = await searchParams
   const limit = 60;
   const skip = 30;
-
-  // const {category } = await searchParams
 
   return (
     // Render categories
@@ -30,27 +37,15 @@ export default async function Products({
         <aside className="p-4 border">
             <h3 className="pb-4 font-semibold">| Categories</h3>
             <ul className="pb-2">
-              <CategoryList />
-              {/*               
-              {results.map((category, index) => (
-                  <li key={index}><Link href="#">{category.name}</Link></li>
-              ))}
-              */}
-
+              <CategoryList cat={category}/>
             </ul>
         </aside>
       </div>
 
-{/* 
-      <div className="px-6 w-2/10">
-        <CategoryList />
-      </div>
-*/}
-
-
       <div className="w-9/10">
           <SearchBarProducts />
-          {(search && search !== "") ?<ProductsList searchQuery={category, search}/>: <FeaturedProductList limit={limit} skip={skip} />}
+          {/* {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip} />} */}
+          {(search && search !== "") ?<ProductsList searchQuery={search}/>: <ProductsList searchQuery={category} />}
       </div>
     </section>
   )
