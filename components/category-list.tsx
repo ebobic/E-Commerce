@@ -1,18 +1,18 @@
 import Link from "next/link";
-import { fetchCategoryList } from "@/lib/extra/product-data";
-import { CapitalizeFirstLetter } from "@/lib/data/utils";
+import { fetchAllCategories } from "@/lib/data/product-data";
+import { CategoriesResponse, Category } from "@/lib/interfaces/products";
 
 export default async function CategoryList() {
-    const response = await fetchCategoryList();
-    const categoryList: string[] = response || [];
+    const response = await fetchAllCategories();
+    const results: Category[] = response || [];
 
     return (
         <>
             <aside className="p-4 border">
                 <h3 className="pb-4 font-semibold">| Categories</h3>
                 <ul className="pb-2">
-                    {categoryList.map((category, index) => (
-                        <li key={index}><Link href="#">{CapitalizeFirstLetter(category)}</Link></li>
+                    {results.map((category, index) => (
+                        <li key={index}><Link href="#">{category.name}</Link></li>
                     ))}
                 </ul>
             </aside>
