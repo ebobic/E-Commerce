@@ -21,7 +21,7 @@ export default async function Products({
   // const results: ProductsResponse[] = response || [];
 
   // console.log(`Cat: ${cat}`)
-  // console.log(`Category: ${category}`)
+  
   console.log(`categoryQuery: ${categoryQuery}`)
   console.log(`searchParams: ${searchParams}`)
   console.log(`Response: ${response.products}`)
@@ -30,6 +30,8 @@ export default async function Products({
   const limit = 60;
   const skip = 30;
 
+  console.log(`Category: ${category}`)
+  
   return (
     // Render categories
     <section className="flex justify-around">
@@ -37,7 +39,7 @@ export default async function Products({
         <aside className="p-4 border">
             <h3 className="pb-4 font-semibold">| Categories</h3>
             <ul className="pb-2">
-              <CategoryList cat={category}/>
+              <CategoryList />
             </ul>
         </aside>
       </div>
@@ -46,6 +48,7 @@ export default async function Products({
           <SearchBarProducts />
           {/* {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip} />} */}
           {(search && search !== "") ?<ProductsList searchQuery={search}/>: <ProductsList searchQuery={category} />}
+          {/* <ProductsList searchQuery={category} /> */}
       </div>
     </section>
   )
