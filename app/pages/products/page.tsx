@@ -1,10 +1,8 @@
-
 import { fetchProductsByCategory } from "@/lib/data/product-data";
-import { ProductsResponse } from "@/lib/interfaces/products";
-
 import SearchBarProducts from "@/components/search-bar-products"
 import FeaturedProductList from "@/components/featured-product-list"
 import ProductsList from "@/components/products-list"
+import ProductCategoryList from "@/components/product-category-list";
 import CategoryList from "@/components/category-list"
 
 export default async function Products({
@@ -15,22 +13,11 @@ export default async function Products({
   searchParams: Promise<{ [key: string]: string }>
 }) {
 
-  // Fetch categories
-  // const cat = "Beauty"
   const response = await fetchProductsByCategory(categoryQuery);
-  // const results: ProductsResponse[] = response || [];
-
-  // console.log(`Cat: ${cat}`)
-  
-  console.log(`categoryQuery: ${categoryQuery}`)
-  console.log(`searchParams: ${searchParams}`)
-  console.log(`Response: ${response.products}`)
 
   const { category, search } = await searchParams
   const limit = 60;
   const skip = 30;
-
-  console.log(`Category: ${category}`)
   
   return (
     // Render categories
@@ -46,9 +33,9 @@ export default async function Products({
 
       <div className="w-9/10">
           <SearchBarProducts />
-          {/* {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip} />} */}
-          {(search && search !== "") ?<ProductsList searchQuery={search}/>: <ProductsList searchQuery={category} />}
-          {/* <ProductsList searchQuery={category} /> */}
+          {/* {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip}/>} */}
+          {(search && search !== "") ?<ProductsList searchQuery={search}/>: <ProductCategoryList searchQuery={category}/>}
+          {/* {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: <FeaturedProductList limit={limit} skip={skip}/>} */}
       </div>
     </section>
   )

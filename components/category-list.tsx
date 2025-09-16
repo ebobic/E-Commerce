@@ -1,10 +1,10 @@
 "use client"
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { formatString } from '@/lib/data/utils';
 
-const categoryArray = ["Beauty", "Fragrances", "Furniture", "Groceries", "Home Decoration", "Kitchen Accessories", "Laptops", "Mens Shirts", "Mens Shoes", "Mens Watches", "Mobile Accessories", "Motorcycle", "Skin Care", "Smartphones", "Sports Accessories", "Sunglasses", "Tablets", "Tops", "Vehicle", "Womens Bags", "Womens Dresses", "Womens Jewellery", "Womens Shoes", "Womens Watches"]
+const categoryArray = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"]
 
-// export default function CategoryList({cat}: {cat: string}) {
 export default function CategoryList() {    
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -28,7 +28,7 @@ export default function CategoryList() {
                 className="text-start cursor-pointer hover:text-blue-900"
                 onClick={() => handleClick(cat)}
             >
-                {cat}
+                {formatString(cat)}
             </button>
             ))}
         </div>
