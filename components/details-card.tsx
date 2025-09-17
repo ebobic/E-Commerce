@@ -1,5 +1,6 @@
 import { Product } from "@/lib/interfaces/products";
 import Image from "next/image";
+
 export default async function ProductDetailsCard({
   id,
   title,
@@ -11,15 +12,15 @@ export default async function ProductDetailsCard({
   brand,
   category,
   thumbnail,
-  images,
+  images = [],
   reviews = [],
 }: Product) {
-  const imageUrl = images[0];
+  const imageUrl = images[0] || thumbnail; // Fallback to thumbnail if images[0] is not available
   return (
-    <article className="relative w-full md:w-[80%] h-full bg-white shadow-md rounded-lg overflow-hidden">
+    <article className="relative w-full md:w-[80%] h-full bg-white rounded-lg overflow-hidden">
       <div className="relative w-full flex flex-col md:flex-row justify-between items-center mx-auto p-4 md:p-8">
         {/* Product Image */}
-        <figure className="relative w-full md:w-1/3 h-auto p-1 md:p-4 flex justify-center">
+        <figure className="relative w-full md:w-1/2 h-auto md:h-[400px] p-1 md:p-4 flex justify-center">
           <div className="relative w-full max-w-[300px] aspect-square">
             <Image
               src={imageUrl}
@@ -31,7 +32,7 @@ export default async function ProductDetailsCard({
             />
           </div>
         </figure>
-        <div className="w-full md:w-2/3">
+        <div className="w-full md:w-1/2">
           {/* Product Name */}
           <div className="flex flex-col w-full h-full bg-white p-4 md:p-8">
             <div className="flex justify-between items-start p-1">
@@ -53,7 +54,7 @@ export default async function ProductDetailsCard({
                 <span className="text-lg md:text-xl font-semibold">
                   ${price}
                 </span>
-                <div className="hidden md:block w-px h-4 bg-black mx-2" />
+                <div className=" md:block w-px h-4 bg-black mx-2" />
                 {/* Rating Stars */}
                 <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -88,7 +89,7 @@ export default async function ProductDetailsCard({
                   </ul>
                 </div>
               </div>
-              <div className="flex flex-col w-full items-start gap-y-2 p-1">
+              <div className="flex flex-col w-full items-start p-1">
                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full mb-2">
                   <div className="inline-flex items-center gap-1 border p-2 rounded-3xl w-full sm:w-1/5 h-10 border-gray-300 border-opacity-50 mb-2 sm:mb-0">
                     <button
