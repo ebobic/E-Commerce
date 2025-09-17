@@ -1,5 +1,4 @@
-import ProductDetailsCard from "@/components/details-card";
-import ProductCard from "@/components/product-card";
+import ProductDetailsCard from "@/components/product-details/details-card";
 import { fetchProductById } from "@/lib/data/product-data";
 
 async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {

@@ -1,10 +1,10 @@
 import { Product } from "@/lib/interfaces/products";
-import ProductImage from "./product-details/product-image";
-import ProductHeader from "./product-details/product-header";
-import ProductPriceAndRating from "./product-details/product-price-rating";
-import ProductDescription from "./product-details/product-description";
-import ProductActions from "./product-details/product-actions";
-import ShippingInfo from "./product-details/shipping-info";
+import ProductImage from "./product-image";
+import ProductHeader from "./product-header";
+import ProductPriceAndRating from "./product-price-rating";
+import ProductDescription from "./product-description";
+import ProductActions from "./product-actions";
+import ShippingInfo from "./shipping-info";
 
 interface ProductDetailsCardProps {
   product: Product;
