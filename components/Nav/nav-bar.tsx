@@ -30,11 +30,14 @@ export default function NavBar() {
                 </div>
 
                 {/* mobile nav*/}
-                {menuOpen && <MobileMenu/>}
+                {menuOpen && <MobileMenu setMenuOpen={setMenuOpen}/>}
                 
                 {/* logo */}
                 <div className="flex w-1/2 md:w-1/3 md:justify-around">
-                    <Link href={"/"}>
+                    <Link 
+                        href={"/"} 
+                        onClick={() => setMenuOpen(false)} // close mobile menu when clicking link
+                    > 
                         <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
                     </Link>
                 </div >
