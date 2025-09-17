@@ -1,4 +1,4 @@
-import NavBar from "@/components/nav-bar";
+import NavBar from "@/components/Nav/nav-bar";
 import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
@@ -28,7 +28,9 @@ export default function RootLayout({
         <header className= "">
           <NavBar />
         </header>
-        {children}
+        <main className="pt-24">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

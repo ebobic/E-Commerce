@@ -21,10 +21,22 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
 
     // ALL DEVICES: Backdrop effects when search is open/closed
     useEffect(() => {
-        const mainContent = document.querySelector('main') || document.body;
-        
         const applyBackdropEffects = () => {
-            mainContent.style.filter = 'brightness(0.5)';
+            // Backdrop effect that darkens content below!
+            const backdrop = document.createElement('div');
+            backdrop.id = 'search-backdrop';
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 45;
+                pointer-events: none;
+            `;
+            document.body.appendChild(backdrop);
+            
             // Prevent scrolling on all devices
             document.body.style.overflow = 'hidden';
             document.body.style.position = 'fixed';
@@ -33,7 +45,12 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
         };
         
         const removeBackdropEffects = () => {
-            mainContent.style.filter = 'brightness(1)';
+            // Remove backdrop overlay
+            const backdrop = document.getElementById('search-backdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+            
             // Restore scrolling
             document.body.style.overflow = '';
             document.body.style.position = '';

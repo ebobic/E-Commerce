@@ -1,4 +1,4 @@
-import { Product, ProductsResponse } from "../interfaces/products";
+import { Category, Product, ProductsResponse } from "../interfaces/products";
 
 export async function fetchProductsData(limit:number, skip:number) {
   const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
@@ -30,6 +30,6 @@ export async function fetchProductsByCategory(category: string) {
 
 export async function fetchAllCategories() {
   const response = await fetch(`https://dummyjson.com/products/categories`);
-  const categories: string[] = await response.json();
+  const categories: Category[] = await response.json();
   return categories;
 }
