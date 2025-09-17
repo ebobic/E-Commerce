@@ -6,6 +6,7 @@ import CategoryList from "@/components/category-list"
 import { fetchProductsData, fetchSearchProducts } from "@/lib/data/product-data"
 import Pagination from "@/components/pagination";
 
+
 export default async function Products({
   searchParams
 }: {
@@ -47,4 +48,5 @@ export default async function Products({
       </div>
     </section>
   )
+
 }
