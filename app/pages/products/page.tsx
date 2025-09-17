@@ -6,18 +6,18 @@ import ProductCategoryList from "@/components/product-category-list";
 import CategoryList from "@/components/category-list"
 
 export default async function Products({
-  categoryQuery,
+  // categoryQuery,
   searchParams
 }: {
-  categoryQuery: string
+  // categoryQuery: string
   searchParams: Promise<{ [key: string]: string }>
 }) {
 
-  const response = await fetchProductsByCategory(categoryQuery);
+  // const categoryData = await fetchProductsByCategory(categoryQuery);
 
   const { category, search } = await searchParams
-  const limit = 60;
-  const skip = 30;
+  const limit = 0;
+  const skip = 0;
   
   return (
     // Render categories
@@ -33,9 +33,7 @@ export default async function Products({
 
       <div className="w-9/10">
           <SearchBarProducts />
-          {/* {(search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip}/>} */}
-          {(search && search !== "") ?<ProductsList searchQuery={search}/>: <ProductCategoryList searchQuery={category}/>}
-          {/* {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: <FeaturedProductList limit={limit} skip={skip}/>} */}
+          {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: (search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip}/>}          
       </div>
     </section>
   )
