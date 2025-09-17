@@ -5,6 +5,7 @@ import ProductPriceAndRating from "./product-price-rating";
 import ProductDescription from "./product-description";
 import ProductActions from "./product-actions";
 import ShippingInfo from "./shipping-info";
+import ImageGallery from "../image-gallery";
 
 interface ProductDetailsCardProps {
   product: Product;
@@ -19,7 +20,7 @@ export default async function ProductDetailsCard({
   return (
     <article className="relative w-full md:w-[85%] h-full bg-white rounded-lg overflow-hidden">
       <div className="relative w-full flex flex-col md:flex-row justify-between items-center p-4 md:p-6">
-        <ProductImage imageUrl={imageUrl} title={product.title} />
+        <ImageGallery images={product.images} title={product.title} />
         <div className="w-full md:w-full">
           <div className="flex flex-col w-full h-full bg-white p-4">
             <ProductHeader title={product.title} />
