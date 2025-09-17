@@ -1,5 +1,5 @@
 import { fetchProductsByCategory } from "@/lib/data/product-data";
-import ProductCard from "./product-card";
+import ProductCard from "./product-card/product-card";
 import { Product } from "@/lib/interfaces/products";
 
 export default async function ProductCategoryList({searchQuery}: {searchQuery: string}) {
