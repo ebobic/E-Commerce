@@ -26,7 +26,7 @@ export default async function Products({
     const response = await fetchProductsData(pageLimit, skip);
     totalCount = response.total;
   }
-  
+
   const totalPages = Math.ceil(totalCount / pageLimit);
   
   return (
