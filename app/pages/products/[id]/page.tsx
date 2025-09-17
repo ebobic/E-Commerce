@@ -8,7 +8,7 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const productData = await fetchProductById(productId.id);
   return (
     <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
-      {<ProductDetailsCard {...productData} />}
+      {<ProductDetailsCard product={productData} />}
     </section>
   );
 }
