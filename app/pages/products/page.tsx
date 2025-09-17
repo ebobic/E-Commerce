@@ -1,26 +1,35 @@
-import { fetchProductsByCategory } from "@/lib/data/product-data";
 import SearchBarProducts from "@/components/search-bar-products"
 import FeaturedProductList from "@/components/featured-product-list"
 import ProductsList from "@/components/products-list"
 import ProductCategoryList from "@/components/product-category-list";
 import CategoryList from "@/components/category-list"
+import { fetchProductsData, fetchSearchProducts } from "@/lib/data/product-data"
+import Pagination from "@/components/pagination";
 
 export default async function Products({
-  // categoryQuery,
   searchParams
 }: {
-  // categoryQuery: string
-  searchParams: Promise<{ [key: string]: string }>
+  searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
 
-  // const categoryData = await fetchProductsByCategory(categoryQuery);
+  const { limit, page, category, search } = await searchParams
+  const currentPage = Number(page) || 1;
+  const pageLimit = Number(limit) || 30;
+  const skip = (currentPage - 1) * pageLimit;
 
-  const { category, search } = await searchParams
-  const limit = 0;
-  const skip = 0;
+  let totalCount = 0;
+
+  if (search && search !== "") {
+    const response = await fetchSearchProducts(search);
+    totalCount = response.total;
+  } else {
+    const response = await fetchProductsData(pageLimit, skip);
+    totalCount = response.total;
+  }
+  
+  const totalPages = Math.ceil(totalCount / pageLimit);
   
   return (
-    // Render categories
     <section className="flex justify-around">
       <div className="px-6 w-2/10">
         <aside className="p-4 border">
@@ -33,7 +42,8 @@ export default async function Products({
 
       <div className="w-9/10">
           <SearchBarProducts />
-          {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: (search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={limit} skip={skip}/>}          
+          {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: (search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={pageLimit} skip={skip}/>}
+          <Pagination currentPage={currentPage} totalPages={totalPages}/>
       </div>
     </section>
   )
