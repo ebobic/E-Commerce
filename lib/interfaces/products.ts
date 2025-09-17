@@ -30,6 +30,12 @@ export interface ProductsResponse {
     limit: number;
 }
 
+export interface Category {
+    slug: string;
+    name: string;
+    url: string;
+}
+
 export interface Meta {
     createdAt: string;
     updatedAt: string;
