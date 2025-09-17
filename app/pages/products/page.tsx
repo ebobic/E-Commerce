@@ -5,6 +5,7 @@ import ProductCategoryList from "@/components/product-category-list";
 import CategoryList from "@/components/category-list"
 import { fetchProductsData, fetchSearchProducts } from "@/lib/data/product-data"
 import Pagination from "@/components/pagination";
+import NextBreadcrumb from "@/components/breadcrumb";
 
 export default async function Products({
   searchParams
@@ -41,6 +42,14 @@ export default async function Products({
       </div>
 
       <div className="w-9/10">
+      <NextBreadcrumb
+          homeElement={'Home'}
+          separator={`>`}
+          activeClasses='text-blue-900'
+          containerClasses='flex py-5'
+          listClasses='hover:underline mx-2'
+          capitalizeLinks
+        />
           <SearchBarProducts />
           {(category && category !== "") ?<ProductCategoryList searchQuery={category}/>: (search && search !== "") ?<ProductsList searchQuery={search}/>: <FeaturedProductList limit={pageLimit} skip={skip}/>}
           <Pagination currentPage={currentPage} totalPages={totalPages}/>
