@@ -1,6 +1,7 @@
 import ProductDetailsCard from "@/components/details-card";
 import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
+import ReviewsSection from "@/components/reviews-section";
 
 async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const productId = await params;
@@ -10,6 +11,9 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
     <>
         <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
         {<ProductDetailsCard {...productData} />}
+        </section>
+        <section className="w-full">
+          <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
         </section>
         <SimilarProducts category={productData.category} id={productData.id}/>
     </>
