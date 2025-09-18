@@ -12,9 +12,9 @@ export default function ShippingInfo() {
             objectFit="contain"
           />
         </div>
-        <span className="text-[10px] md:text-xs opacity-60">
+        <p className="text-[10px] md:text-xs opacity-60">
           Free worldwide shipping on all orders over $100
-        </span>
+        </p>
       </div>
       <div className="flex flex-row items-center gap-2 w-full mb-2 p-1 hover:bg-gray-50 rounded-md transition-colors">
         <div className="w-[20px] h-[20px] relative opacity-30">
@@ -25,9 +25,9 @@ export default function ShippingInfo() {
             objectFit="contain"
           />
         </div>
-        <span className="text-[10px] md:text-xs opacity-60">
+        <p className="text-[10px] md:text-xs opacity-60">
           Delivers in: 3-7 Working Days Shipping & Return
-        </span>
+        </p>
       </div>
     </div>
   );
