@@ -1,17 +1,20 @@
 "use client"
 
 import { toast } from "sonner";
-
 import QuantitySelector from "./quantity-selector";
 
-export default function ProductActions() {
+interface ProductHeaderProps {
+  title: string;
+}
+
+export default function ProductActions({ title }: ProductHeaderProps) {
   return (
     <div className="flex flex-col w-full items-start p-1">
       <div className="flex flex-col sm:flex-row items-center gap-4 w-full mb-2">
         <QuantitySelector />
         <button
           className="bg-black text-center text-sm md:text-base text-white py-2 p-2 rounded-3xl w-full sm:w-4/5 h-10 hover:bg-gray-800 transition-colors"
-          onClick={() => toast.success("Product added to cart.")}
+          onClick={() => toast.success(`${title} added to cart.`)}
         >
           Add to Cart
         </button>

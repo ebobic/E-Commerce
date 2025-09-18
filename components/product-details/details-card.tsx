@@ -36,7 +36,7 @@ export default async function ProductDetailsCard({
                 brand={product.brand}
                 category={product.category}
               />
-              <ProductActions />
+              <ProductActions title={product.title} />
               <ShippingInfo />
             </div>
           </div>
