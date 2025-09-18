@@ -10,21 +10,22 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const productData = await fetchProductById(productId.id);
   return (
     <>
-    <NextBreadcrumb
-          homeElement={'Home'}
-          separator={`>`}
-          activeClasses='text-blue-900!'
-          containerClasses='flex py-5'
-          listClasses='hover:underline mx-2'
-          capitalizeLinks
-        />
-        <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
-        {<ProductDetailsCard {...productData} />}
-        </section>
-        <section className="w-full">
-          <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
-        </section>
-        <SimilarProducts category={productData.category} id={productData.id}/>
+      <NextBreadcrumb
+        homeElement={'Home'}
+        separator={`>`}
+        activeClasses='text-blue-900!'
+        containerClasses='flex py-5'
+        listClasses='hover:underline mx-2'
+        capitalizeLinks
+        linkName={productData.title}
+      />
+      <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
+      {<ProductDetailsCard {...productData} />}
+      </section>
+      <section className="w-full">
+        <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
+      </section>
+      <SimilarProducts category={productData.category} id={productData.id}/>
     </>
   );
 }
