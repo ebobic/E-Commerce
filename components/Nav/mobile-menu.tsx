@@ -7,7 +7,7 @@ type MobileMenuProps = {
 
 export default function MobileMenu({setMenuOpen}: MobileMenuProps) {
     return (
-        <ul className="flex flex-col absolute top-20 left-0 w-full px-4 bg-white text-neutral-800 md:hidden">
+        <ul className="flex flex-col absolute top-20 left-0 w-full px-6 bg-white text-neutral-800 md:hidden">
             {data["pages"].map((link, index) => (
             <li 
                 key={index} 

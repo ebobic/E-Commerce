@@ -38,7 +38,7 @@ export default function NavBar() {
                         href={"/"} 
                         onClick={() => setMenuOpen(false)} // close mobile menu when clicking link
                     > 
-                        <h2 className="text-3xl font-bold text-blue-900">MegaMart</h2>
+                        <h2 className="text-2xl md:text-3xl font-bold text-blue-900">MegaMart</h2>
                     </Link>
                 </div >
 
