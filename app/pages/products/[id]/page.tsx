@@ -13,7 +13,7 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
     <NextBreadcrumb
           homeElement={'Home'}
           separator={`>`}
-          activeClasses='text-blue-900'
+          activeClasses='text-blue-900!'
           containerClasses='flex py-5'
           listClasses='hover:underline mx-2'
           capitalizeLinks
