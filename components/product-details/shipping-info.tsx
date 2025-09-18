@@ -8,7 +8,7 @@ export default function ShippingInfo({shippingInformation}: ShippingInfoProps) {
   return (
     <div className="mt-2 md:mt-1">
 
-      <div className="flex flex-row items-center gap-2 w-full mb-2 p-1 hover:bg-gray-50 rounded-md transition-colors">
+      <div className="flex flex-row items-center gap-2 w-full mb-2 p-1">
         <div className="w-[20px] h-[20px] relative opacity-30">
           <Image
             src="/truck.svg"
@@ -22,7 +22,7 @@ export default function ShippingInfo({shippingInformation}: ShippingInfoProps) {
         </p>
       </div>
 
-      <div className="flex flex-row items-center gap-2 w-full mb-2 p-1 hover:bg-gray-50 rounded-md transition-colors">
+      <div className="flex flex-row items-center gap-2 w-full mb-2 p-1">
         <div className="w-[20px] h-[20px] relative opacity-30">
           <Image
             src="/return-box.svg"
