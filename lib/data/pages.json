@@ -1,10 +1,6 @@
 {
     "pages": [
         {
-            "href": "/",
-            "label": "Home"
-        },
-        {
             "href": "/pages/products",
             "label": "Products"
         },

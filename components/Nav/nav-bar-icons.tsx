@@ -13,7 +13,7 @@ export default function NavBarIcons({searchOpen, setSearchOpen, menuOpen, setMen
     return (
         <div className="flex md:w-1/3 md:justify-end">
                 {/* link icons + hamburger menu button */}
-                <div className="flex gap-6">
+                <div className="flex gap-4 md:gap-6">
 
                     {/* search */}
                     <SearchBar onSearchToggle={(isOpen) => {
@@ -23,7 +23,7 @@ export default function NavBarIcons({searchOpen, setSearchOpen, menuOpen, setMen
 
                     {/* user */}
                     <Link href={"#"}>
-                        <div className="w-[25px] h-[25px] relative">
+                        <div className="w-[24px] h-[24px] relative">
                         <Image
                             src="/user.svg"
                             alt="User Icon"
@@ -35,7 +35,7 @@ export default function NavBarIcons({searchOpen, setSearchOpen, menuOpen, setMen
                     
                     {/* shopping cart */}
                     <Link href={"#"}>
-                        <div className="w-[25px] h-[25px] relative">
+                        <div className="w-[24px] h-[24px] relative">
                         <Image
                             src="/handbag.svg"
                             alt="Handbag Icon"
@@ -47,7 +47,7 @@ export default function NavBarIcons({searchOpen, setSearchOpen, menuOpen, setMen
                     
                     {/* hamburger menu toggle */}
                     <button 
-                        className="w-[25px] h-[25px] relative md:hidden"
+                        className="w-[24px] h-[24px] relative md:hidden"
                         onClick={() => {
                             setMenuOpen(!menuOpen);
                             if (!menuOpen) setSearchOpen(false); // Close search when mobile menu opens
