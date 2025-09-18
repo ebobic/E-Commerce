@@ -7,7 +7,6 @@ interface ProductDescriptionProps {
 
 export default function ProductDescription({
   description,
-  stock,
   brand,
   category,
 }: ProductDescriptionProps) {
@@ -21,7 +20,6 @@ export default function ProductDescription({
         </p>
         {/* Dotted List */}
         <ul className="list-disc list-inside text-xs md:text-sm text-gray-500 mb-2 pl-4 leading-relaxed">
-          <li>In stock: {stock} units available</li>
           <li>Brand: {brand}</li>
           <li>Category: {category}</li>
         </ul>
