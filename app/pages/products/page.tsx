@@ -44,7 +44,6 @@ export default async function Products({
       <div className="w-9/10">
       <NextBreadcrumb
           homeElement={'Home'}
-          separator={`>`}
           activeClasses='text-blue-900!'
           containerClasses='flex py-5'
           listClasses='hover:underline mx-2'

@@ -3,20 +3,16 @@
 import React, { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { title } from 'process'
-import ProductCard from './product-card'
 
 type TBreadCrumbProps = {
     homeElement: ReactNode,
-    separator: ReactNode,
     containerClasses?: string,
     listClasses?: string,
     activeClasses?: string,
     capitalizeLinks?: boolean
-    linkName?: string;
 }
 
-const NextBreadcrumb = ({homeElement, separator, containerClasses, listClasses, activeClasses, capitalizeLinks, linkName}: TBreadCrumbProps) => {
+const NextBreadcrumb = ({homeElement, containerClasses, listClasses, activeClasses, capitalizeLinks}: TBreadCrumbProps) => {
 
 const paths = usePathname()
 const pathNames = paths.split('/').filter( path => path )
@@ -41,8 +37,6 @@ const pathNames = paths.split('/').filter( path => path )
                     let href = `/${pathNames.slice(0, index + 1).join('/')}`
                     let itemClasses = paths === href ? `${listClasses} ${activeClasses}` : listClasses
                     let itemLink = capitalizeLinks ? link[0].toUpperCase() + link.slice(1, link.length) : link
-                    // let itemLink = linkName
-                    let itemName = link
 
                     return (
                         <React.Fragment key={index}>
@@ -55,9 +49,6 @@ const pathNames = paths.split('/').filter( path => path )
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
                                     </svg>
                                     {itemLink}
-                                    {/* {(itemLink !== "1") ?console.log("Item Link is NOT a number") : {itemLink}} */}
-                                    {/* {linkName} */}
-                                    {/* {itemName} */}
                                 </Link>
                             </li>
                             {pathNames.length !== index + 1}

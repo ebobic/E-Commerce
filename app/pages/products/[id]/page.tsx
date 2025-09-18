@@ -12,12 +12,10 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
     <>
       <NextBreadcrumb
         homeElement={'Home'}
-        separator={`>`}
         activeClasses='text-blue-900!'
         containerClasses='flex py-5'
         listClasses='hover:underline mx-2'
         capitalizeLinks
-        linkName={productData.title}
       />
       <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
       {<ProductDetailsCard {...productData} />}
