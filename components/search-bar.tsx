@@ -2,6 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useDebouncedCallback } from 'use-debounce';
+import { Product } from '@/lib/interfaces/products';
+import { fetchSearchProducts, fetchProductsByCategory } from '@/lib/data/product-data';
+import SearchBarDropdown from './search-bar-dropdown';
 
 interface SearchBarProps {
     onSearchToggle?: (isOpen: boolean) => void;
@@ -9,7 +13,40 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSearchToggle }: SearchBarProps) {
     const [searchOpen, setSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    // Search function with debouncing
+    const handleSearch = useDebouncedCallback(async (query: string) => {
+        if (!query.trim()) {
+            setSearchResults([]);
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            // Search both products and categories
+            const [productResults, categoryResults] = await Promise.all([
+                fetchSearchProducts(query),
+                fetchProductsByCategory(query)
+            ]);
+
+            // Combine results and remove duplicates
+            const combinedResults = [...productResults.products, ...categoryResults.products];
+            const uniqueResults = combinedResults.filter((product, index, self) => 
+                index === self.findIndex(p => p.id === product.id)
+            );
+
+            setSearchResults(uniqueResults);
+        } catch (error) {
+            console.error('Search error:', error);
+            setSearchResults([]);
+        } finally {
+            setIsLoading(false);
+        }
+    }, 300);
 
 
     // MOBILE/TABLET: Trigger keyboard when search dropdown opens
@@ -109,17 +146,24 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                             </div>
                             
                             {/* Search Input */}
-                                    <input
-                                        ref={inputRef}
-                                        type="text"
-                                        placeholder="Search for a product..."
-                                        className="flex-1 bg-transparent text-gray-600 placeholder-gray-600 focus:outline-none text-base font-medium"
-                                    />
+                            <input
+                                ref={inputRef}
+                                type="text"
+                                placeholder="Search for a product..."
+                                value={searchQuery}
+                                onChange={(e) => {
+                                    setSearchQuery(e.target.value);
+                                    handleSearch(e.target.value);
+                                }}
+                                className="flex-1 bg-transparent text-gray-600 placeholder-gray-600 focus:outline-none text-base font-medium"
+                            />
                             
                             {/* Close Button */}
                             <button
                                 onClick={() => {
                                     setSearchOpen(false);
+                                    setSearchQuery('');
+                                    setSearchResults([]);
                                     onSearchToggle?.(false);
                                 }}
                                 className="w-5 h-5 relative ml-3 text-gray-600 hover:text-gray-800"
@@ -129,6 +173,13 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                                 </svg>
                             </button>
                         </div>
+                        
+                        {/* Search Results Dropdown */}
+                        <SearchBarDropdown 
+                            searchResults={searchResults}
+                            isLoading={isLoading}
+                            searchQuery={searchQuery}
+                        />
                     </div>
                 </div>
             )}
