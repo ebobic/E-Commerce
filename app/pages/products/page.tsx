@@ -7,6 +7,7 @@ import { fetchProductsData, fetchSearchProducts } from "@/lib/data/product-data"
 import Pagination from "@/components/pagination";
 import NextBreadcrumb from "@/components/breadcrumb";
 
+
 export default async function Products({
   searchParams
 }: {
@@ -55,4 +56,5 @@ export default async function Products({
       </div>
     </section>
   )
+
 }

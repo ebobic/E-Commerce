@@ -1,5 +1,5 @@
 import { fetchProductsData } from "@/lib/data/product-data";
-import ProductCard from "./product-card";
+import ProductCard from "./product-card/product-card";
 import { Product } from "@/lib/interfaces/products";
 
 interface FeaturedProductListProps {
@@ -9,6 +9,7 @@ interface FeaturedProductListProps {
   number?: number;
   id?: number
 }
+
 
 export default async function FeaturedProductList({ limit, skip, category, number, id }: FeaturedProductListProps) {
 

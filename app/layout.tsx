@@ -25,12 +25,11 @@ export default function RootLayout({
         className={`${montserratSans.variable} antialiased`}
         suppressHydrationWarning
       >
-        <header className= "">
+        
+        <header className="">
           <NavBar />
         </header>
-        <main className="pt-24">
-          {children}
-        </main>
+        <main className="pt-24">{children}</main>
         <Footer />
       </body>
     </html>

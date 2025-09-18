@@ -1,14 +1,17 @@
-import ProductDetailsCard from "@/components/details-card";
+import ProductDetailsCard from "@/components/product-details/details-card";
 import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
 import ReviewsSection from "@/components/reviews-section";
 import NextBreadcrumb from "@/components/breadcrumb";
+import ImageGallery from "@/components/image-gallery";
+import { Toaster } from 'sonner';
 
 async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const productId = await params;
   //fetch Product Data
   const productData = await fetchProductById(productId.id);
   return (
+
     <>
       <NextBreadcrumb
         homeElement={'Home'}
@@ -18,12 +21,14 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
         capitalizeLinks
       />
       <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
+      {/* <ImageGallery {...productData} /> */}
       {<ProductDetailsCard {...productData} />}
       </section>
       <section className="w-full">
         <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
       </section>
       <SimilarProducts category={productData.category} id={productData.id}/>
+      <Toaster richColors position="bottom-center" />
     </>
   );
 }
