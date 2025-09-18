@@ -2,6 +2,7 @@ import ProductDetailsCard from "@/components/product-details/details-card";
 import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
 import ReviewsSection from "@/components/reviews-section";
+import NextBreadcrumb from "@/components/breadcrumb";
 import ImageGallery from "@/components/image-gallery";
 import { Toaster } from 'sonner';
 
@@ -12,15 +13,22 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   return (
 
     <>
-        <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
-        {/* <ImageGallery {...productData} /> */}
-        {<ProductDetailsCard product={productData} />}
-        </section>
-        <section className="w-full">
-          <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
-        </section>
-        <SimilarProducts category={productData.category} id={productData.id}/>
-        <Toaster richColors position="bottom-center" />
+      <NextBreadcrumb
+        homeElement={'Home'}
+        activeClasses='text-blue-900!'
+        containerClasses='flex py-5'
+        listClasses='hover:underline mx-2'
+        capitalizeLinks
+      />
+      <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
+      {/* <ImageGallery {...productData} /> */}
+      {<ProductDetailsCard {...productData} />}
+      </section>
+      <section className="w-full">
+        <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
+      </section>
+      <SimilarProducts category={productData.category} id={productData.id}/>
+      <Toaster richColors position="bottom-center" />
     </>
   );
 }
