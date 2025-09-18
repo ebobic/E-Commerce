@@ -1,3 +1,4 @@
+'use client';
 import ProductCardHeader from "./product-card-header";
 import ProductCardDescription from "./product-card-description";
 import ProductCardButton from "./product-card-button";
@@ -24,7 +25,7 @@ export default function ProductCardDetails({
       </div>
 
       {/* Buy Button */}
-      <ProductCardButton />
+      <ProductCardButton title={title} />
     </div>
   );
 }

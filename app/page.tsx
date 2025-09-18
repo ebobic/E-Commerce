@@ -4,6 +4,7 @@ import FeaturedProduct from "@/components/featured-products";
 import FeaturedProductList from "@/components/featured-product-list";
 import ContactForm from "@/components/contact-form";
 import AboutUs from "@/components/about-us";
+import { Toaster } from "sonner";
 
 export default function Home() {
   return (
@@ -11,8 +12,9 @@ export default function Home() {
       <Hero />
       <BenefitsBanner />
       <FeaturedProduct />
-      <AboutUs/>
+      <AboutUs />
       <ContactForm />
+      <Toaster richColors position="bottom-center" />
     </main>
     );
 }
