@@ -23,7 +23,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
                     <button
                         key={id}
                         onClick={() => setSelectedImage(img)} // change main image when clicked
-                        className={`relative w-full aspect-square rounded-lg overflow-hidden border bg-blue-50 
+                        className={`relative w-full aspect-square rounded-lg overflow-hidden border bg-blue-50 cursor-pointer 
                             ${selectedImage === img ? "border-blue-800 border-1" : "border-transparent"} 
                         `}
                     >
