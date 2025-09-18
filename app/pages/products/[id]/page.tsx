@@ -1,10 +1,9 @@
-
 import ProductDetailsCard from "@/components/product-details/details-card";
-
 import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
 import ReviewsSection from "@/components/reviews-section";
 import ImageGallery from "@/components/image-gallery";
+import { Toaster } from 'sonner';
 
 async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const productId = await params;
@@ -21,6 +20,7 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
           <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
         </section>
         <SimilarProducts category={productData.category} id={productData.id}/>
+        <Toaster richColors position="bottom-center" />
     </>
   );
 }
