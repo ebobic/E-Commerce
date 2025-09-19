@@ -3,7 +3,6 @@ import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
 import ReviewsSection from "@/components/reviews-section";
 import NextBreadcrumb from "@/components/breadcrumb";
-import ImageGallery from "@/components/image-gallery";
 import { Toaster } from 'sonner';
 
 async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
@@ -21,7 +20,6 @@ async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
         capitalizeLinks
       />
       <section className="flex flex-col relative items-center p-6 rounded-md max-w-0xl mx-auto">
-      {/* <ImageGallery {...productData} /> */}
       {<ProductDetailsCard product={productData} />}
       </section>
       <section className="w-full">
