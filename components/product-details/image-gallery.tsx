@@ -14,7 +14,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(imagesToRender[0]);  // Keeping track of which image is currently selected, default is first in the list
 
     return (
-        <div className="flex items-center justify-center w-full gap-4">
+        <div className="flex items-center justify-center w-9/10 md:w-1/2 gap-4">
 
         {/* Thumbnails that show if there is more than 1 image to render*/}
         {imagesToRender.length > 1 && (

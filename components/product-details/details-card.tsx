@@ -5,7 +5,7 @@ import ProductPriceAndRating from "./product-price-rating";
 import ProductDescription from "./product-description";
 import ProductActions from "./product-actions";
 import ShippingInfo from "./shipping-info";
-import ImageGallery from "../image-gallery";
+import ImageGallery from "./image-gallery";
 
 interface ProductDetailsCardProps {
   product: Product;
@@ -18,13 +18,12 @@ export default async function ProductDetailsCard({
   const reviewCount = product.reviews?.length || 0;
 
   return (
-    <article className="relative w-full md:w-[85%] h-full bg-white rounded-lg overflow-hidden">
-      <div className="relative w-full flex flex-col md:flex-row justify-between items-center p-4 md:p-6">
+    <article className="flex flex-col md:flex-row w-9/10 lg:5/10 max-w-[1200px] justify-center items-center md:items-start m-auto gap-8 py-2 sm:py-12">
         <ImageGallery images={product.images} title={product.title} />
-        <div className="w-full md:w-full">
-          <div className="flex flex-col w-full h-full bg-white p-4">
+        <div className=" w-9/10 md:w-1/2 ">
+          <div className="flex flex-col w-full h-full bg-white">
             <ProductHeader title={product.title} />
-            <div className="flex flex-col gap-y-2 md:gap-y-4 items-start p-1">
+            <div className="flex flex-col gap-y-2  items-start">
               <ProductPriceAndRating
                 price={product.price}
                 rating={product.rating}
@@ -41,7 +40,6 @@ export default async function ProductDetailsCard({
             </div>
           </div>
         </div>
-      </div>
     </article>
   );
 }
