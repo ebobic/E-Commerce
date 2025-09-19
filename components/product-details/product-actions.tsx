@@ -17,7 +17,7 @@ export default function ProductActions({ title, stock }: ProductHeaderProps) {
       
       { noStock ? (
         <button
-          className="bg-blue-800 text-center text-sm md:text-base text-white py-2 p-2 rounded-3xl w-full h-10 bg-blue-900 rounded-[50px] text-white font-bold hover:bg-blue-800 transition-colors cursor-pointer"
+          className="text-center text-sm md:text-base text-white py-2 p-2 rounded-3xl w-full h-10 bg-blue-900 font-bold hover:bg-blue-800 transition-colors cursor-pointer"
           onClick={() => toast.success(`You will be notified when ${title} is back in stock.`)}
         >
           Notify Me
