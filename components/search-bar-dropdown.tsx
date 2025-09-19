@@ -83,7 +83,7 @@ export default function SearchBarDropdown({
                 </div>
                 
                 {/* View All Results Link */}
-                {searchResults.length === 6 && (
+                {searchResults.length >= 6 && (
                     <div className="text-center mt-4">
                         <a 
                             href={`/pages/products?search=${encodeURIComponent(searchQuery)}`} 
