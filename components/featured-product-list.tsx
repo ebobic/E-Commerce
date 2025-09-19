@@ -1,5 +1,5 @@
 import { fetchProductsData } from "@/lib/data/product-data";
-import ProductCard from "./product-card/product-card";
+import ProductCardNew from "./product-card/product-card-new";
 import { Product } from "@/lib/interfaces/products";
 
 interface FeaturedProductListProps {
@@ -28,7 +28,7 @@ export default async function FeaturedProductList({ limit, skip, category, numbe
     <section className="flex flex-col relative items-center pt-10">
       <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
         {products.map((product: Product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCardNew key={product.id} {...product} />
         ))}
       </ul>
     </section>
