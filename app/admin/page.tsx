@@ -1,5 +1,6 @@
 import { fetchProductsData } from "@/lib/data/product-data";
 import { Product } from "@/lib/interfaces/products";
+import Link from "next/link";
 
 export default async function AdminPage() {
   // Fetch 30 products from API
@@ -19,9 +20,12 @@ export default async function AdminPage() {
           {/* Table header + create button */}
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold">Products</h2>
-            <button className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">
+            <Link 
+              href="/admin/create"
+              className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800"
+            >
               Create Product
-            </button>
+            </Link>
           </div>
           
           {/* Products table */}
@@ -53,7 +57,7 @@ export default async function AdminPage() {
             </tbody>
           </table>
         </div>
-      </div>
+          </div>
     </div>
   );
 }
