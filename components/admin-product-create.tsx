@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Form from "next/form";
 import { toast } from "sonner";
 
-export default function ProductDeleteClient() {
+export default function ProductCreate() {
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [category, setCategory] = useState<string>("");
@@ -12,8 +12,6 @@ export default function ProductDeleteClient() {
     const [submitted, setSubmitted] = useState<boolean>(false);
 
     const handleSubmit = () => {
-    // console.log({ title, description, category, price });
-
     fetch('https://dummyjson.com/products/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,9 +32,8 @@ export default function ProductDeleteClient() {
     return (
         <section className="grid grid-cols-1 pb-10 justify-self-center">
             <div className="pt-6 pb-2 text-center">
-                <h2 className="pt-6 text-2xl font-bold">Add a new product - Server</h2>
+                <h2 className="pt-6 text-2xl font-bold">Add a new product</h2>
             </div>
-            {/* <Form action={handleSubmit} className="grid place-content-center"> */}
             <Form action={handleSubmit} className="grid">
                 <input
                     type="text"
