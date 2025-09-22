@@ -89,20 +89,7 @@ export default function AdminPage() {
           {isLoading ? "Adding..." : "Add Sample Product"}
         </button>
 
-        {error && (
-          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
-            Error: {error}
-          </div>
-        )}
-
-        {result && (
-          <div className="mt-4">
-            <h3 className="font-medium">Product Added Successfully:</h3>
-            <pre className="mt-2 p-3 bg-gray-100 rounded overflow-auto">
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </div>
-        )}
+        
       </section>
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Update Product</h2>
@@ -123,6 +110,20 @@ export default function AdminPage() {
         >
           {isLoading ? "Deleting..." : "Delete Product"}
         </button>
+        {error && (
+          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+            Error: {error}
+          </div>
+        )}
+
+        {result && (
+          <div className="mt-4">
+            <h3 className="font-medium">Operation Successfull:</h3>
+            <pre className="mt-2 p-3 bg-gray-100 rounded overflow-auto">
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
+        )}
       </section>
     </div>
   );
