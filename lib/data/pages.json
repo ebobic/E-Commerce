@@ -11,10 +11,6 @@
         {
             "href": "/contact",
             "label": "Contact"
-        },
-        {
-            "href": "/admin",
-            "label": "Admin"
         }
     ]
 }
