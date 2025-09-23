@@ -1,4 +1,7 @@
-import { fetchProductsData } from "@/lib/data/product-data";
+"use client";
+
+import { useState } from "react";
+import { fetchProductsData, deleteProduct } from "@/lib/data/product-data";
 import { Product } from "@/lib/interfaces/products";
 import Link from "next/link";
 
