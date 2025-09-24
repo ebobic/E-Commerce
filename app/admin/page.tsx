@@ -47,7 +47,13 @@ export default async function AdminPage() {
                   <td className="p-3">{product.title}</td>
                   <td className="p-3">${product.price}</td>
                   <td className="p-3">{product.stock}</td>
-                  <td className="p-3">
+                  <td className="p-3 flex gap-2">
+                    <Link 
+                      href={`/admin/update/${product.id}`} 
+                      className="bg-yellow-100 text-yellow-900 px-3 py-1 rounded hover:bg-yellow-200"
+                    >
+                      Update
+                    </Link>
                     <button className="bg-red-100 text-red-900 px-3 py-1 rounded hover:bg-red-200">
                       Delete
                     </button>
