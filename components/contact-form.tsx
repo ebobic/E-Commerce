@@ -25,7 +25,6 @@ export default function ContactForm() {
           adipisci quasi culpa.
         </p>
       </div>
-      {/* <Form action={handleSubmit} className="grid place-content-center"> */}
       <Form action={handleSubmit} className="grid">
         <div className="grid gap-2 w-9/10 m-auto sm:w-7/10 sm:flex sm:mb-1">
           <input
@@ -73,7 +72,7 @@ export default function ContactForm() {
           >
             Send Message
           </button>
-        {submitted && <p className="pt-2">Form submitted successfully!</p>}
+        {submitted && <p className="mt-3 p-2 opacity-70 border text-xs rounded-lg bg-green-100 text-green-600">Message sent successfully!</p>}
         </div>
       </Form>
         
