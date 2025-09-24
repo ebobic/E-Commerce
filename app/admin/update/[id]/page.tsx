@@ -2,9 +2,14 @@ export default async function UpdateProduct() {
 
     return (
         <div className="p-6 bg-slate-100 min-h-screen">
-            <div className="max-w-7xl mx-auto bg-white p-6 rounded shadow">
-                <h1 className="text-2xl font-bold mb-4">Update Product</h1>
+            <div className="max-w-7xl mx-auto">
+                {/* Page header */}
+                <header className="mb-6">
+                    <h1 className="text-2xl font-bold text-neutral-800">Update Product</h1>
+                    <p className="text-neutral-600">Product ID:</p>
+                </header>
 
+                <section className="max-w-7xl mx-auto bg-white p-6 rounded shadow">
                 <form className="space-y-4">
           
                     <div>
@@ -104,6 +109,7 @@ export default async function UpdateProduct() {
                         Save Changes
                     </button>
                 </form>
+                </section>
             </div>
         </div>
     );
