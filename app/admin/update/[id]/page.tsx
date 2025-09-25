@@ -1,7 +1,7 @@
 import { Product } from "@/lib/interfaces/products";
 import { fetchAllCategories, fetchProductById } from "@/lib/data/product-data";
 
-interface UpdateProductProps {
+interface UpdateProductPageProps {
     params: {id: string};
 }
 
@@ -10,7 +10,7 @@ interface Category {
     name: string;
 }
 
-export default async function UpdateProduct({ params }: UpdateProductProps) {
+export default async function UpdateProductPage({ params }: UpdateProductPageProps) {
     const product: Product = await fetchProductById(params.id);
     const categories = await fetchAllCategories()
 
@@ -32,8 +32,10 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             type="text"
                             name="title"
                             id="title"
+                            placeholder="Product title"
                             defaultValue={product.title}
                             className="w-full border p-2 rounded"
+                            required
                             />
                         </div>
 
@@ -42,6 +44,7 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             <textarea
                             name="description"
                             id="description"
+                            placeholder="Product description"
                             defaultValue={product.description}
                             className="w-full border p-2 rounded"
                             rows={3}
@@ -54,8 +57,10 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             type="text"
                             name="brand"
                             id="brand"
+                            placeholder="Brand"
                             defaultValue={product.brand}
                             className="w-full border p-2 rounded"
+                            required
                             />
                         </div>
 
@@ -66,8 +71,10 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             step="0.01"
                             name="price"
                             id="price"
+                            placeholder="Price"
                             defaultValue={product.price}
                             className="w-full border p-2 rounded"
+                            required
                             />
                         </div>
 
@@ -77,8 +84,10 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             type="number"
                             name="stock"
                             id="stock"
+                            placeholder="Stock"
                             defaultValue={product.stock}
                             className="w-full border p-2 rounded"
+                            required
                             />
                         </div>
 
@@ -89,6 +98,7 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                                 id="category"
                                 defaultValue={product.category}
                                 className="w-full border p-2 rounded"
+                                required
                             >
                                 {categories.map((cat: Category) => (
                                     <option key={cat.slug} value={cat.slug}>
@@ -103,6 +113,7 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             <textarea
                             name="shippingInformation"
                             id="shippingInformation"
+                            placeholder="Shipping information"
                             defaultValue={product.shippingInformation}
                             className="w-full border p-2 rounded"
                             rows={2}
@@ -115,6 +126,7 @@ export default async function UpdateProduct({ params }: UpdateProductProps) {
                             type="text"
                             name="images"
                             id="images"
+                            placeholder="Images"
                             defaultValue={product.images}
                             className="w-full border p-2 rounded"
                             />
