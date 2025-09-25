@@ -1,10 +1,42 @@
-import { fetchProductsData } from "@/lib/data/product-data";
+"use client";
+
+import { useState, useEffect } from "react";
+import { fetchProductsData, deleteProduct } from "@/lib/data/product-data";
 import { Product } from "@/lib/interfaces/products";
 import Link from "next/link";
 
-export default async function AdminPage() {
-  // Fetch 30 products from API
-  const { products } = await fetchProductsData(30, 0);
+export default function AdminPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch products from API when page loads
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const { products } = await fetchProductsData(30, 0);
+        setProducts(products);
+      } catch (err) {
+        setError("Failed to load products");
+      }
+    };
+    loadProducts();
+  }, []);
+
+  // Delete function!
+  const handleDeleteProduct = async (id: string) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      await deleteProduct(id);
+      // Remove product from list after successful deletion
+      setProducts(products.filter(product => product.id !== parseInt(id)));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="p-6 bg-slate-100 min-h-screen">
@@ -54,16 +86,27 @@ export default async function AdminPage() {
                     >
                       Update
                     </Link>
-                    <button className="bg-red-100 text-red-900 px-3 py-1 rounded hover:bg-red-200">
-                      Delete
+                    <button 
+                      onClick={() => handleDeleteProduct(product.id.toString())}
+                      disabled={isLoading}
+                      className="bg-red-100 text-red-900 px-3 py-1 rounded hover:bg-red-200 disabled:opacity-50"
+                    >
+                      {isLoading ? "Deleting..." : "Delete"}
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          
+          {/* Error message */}
+          {error && (
+            <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+              Error: {error}
+            </div>
+          )}
         </div>
-          </div>
+      </div>
     </div>
   );
 }
