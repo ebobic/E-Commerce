@@ -60,7 +60,6 @@ export default async function UpdateProductPage({ params }: UpdateProductPagePro
                             placeholder="Brand"
                             defaultValue={product.brand}
                             className="w-full border p-2 rounded"
-                            required
                             />
                         </div>
 
