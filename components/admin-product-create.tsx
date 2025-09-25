@@ -21,6 +21,8 @@ export default function ProductCreate() {
     const [depth, setDepth] = useState<string>("");
     const [images, setImages] = useState<string>("https://example.com/image1.jpg");
     const [submitted, setSubmitted] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const loadCategories = async () => {
@@ -37,7 +39,10 @@ export default function ProductCreate() {
     }, []);
 
     const handleSubmit = () => {
-    fetch('https://dummyjson.com/products/add', {
+    setIsLoading(true);
+    setError(null);    
+    try {
+        fetch('https://dummyjson.com/products/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -54,14 +59,18 @@ export default function ProductCreate() {
             heigth: {heigth},
             depth: {depth},
             images: {images}
+            })
         })
-    })
+        .then(res => res.json())
+        .then(console.log);
+        setSubmitted(true);
+        toast.success(`${title} added successfully!`);
+    } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+        setIsLoading(false);
+    }
 
-    .then(res => res.json())
-    .then(console.log);
-
-    toast.success(`${title} added successfully!`);
-    setSubmitted(true);
     };
 
     return (
@@ -185,7 +194,8 @@ export default function ProductCreate() {
                 <div className="mt-2 md:mx-2 md:col-span-1">
                 <label htmlFor="weight" className="">Weight:
                 <input
-                    type="text"
+                    type="tel"
+                    pattern="[0-9,.]*"
                     className="px-2 rounded-sm bg-blue-100 w-full"
                     name="weight"
                     id="weight"
@@ -198,7 +208,8 @@ export default function ProductCreate() {
                 <div className="mt-2">Dimensions:
                     <label htmlFor="width" className="flex gap-[14px]">Width:
                     <input
-                        type="text"
+                        type="tel"
+                        pattern="[0-9,.]*"
                         className="px-2 rounded-sm bg-blue-100 w-full"
                         name="width"
                         id="width"
@@ -209,7 +220,8 @@ export default function ProductCreate() {
 
                     <label htmlFor="height" className="flex mt-1 gap-2">Height:
                     <input
-                        type="text"
+                        type="tel"
+                        pattern="[0-9,.]*"
                         className="px-2 rounded-sm bg-blue-100 w-full"
                         name="height"
                         id="height"
@@ -220,7 +232,8 @@ export default function ProductCreate() {
 
                     <label htmlFor="depth" className="flex mt-1 gap-[12px]">Depth:
                     <input
-                        type="text"
+                        type="tel"
+                        pattern="[0-9,.]*"
                         className="px-2 rounded-sm bg-blue-100 w-full"
                         name="depth"
                         id="depth"
@@ -237,7 +250,6 @@ export default function ProductCreate() {
                     name="image"
                     id="image"
                     multiple
-                    placeholder=""
                     aria-label="Create product - Image"
                     onChange={(e) => setImages(e.target.value)}
                 />
@@ -248,9 +260,10 @@ export default function ProductCreate() {
                 <div className="grid justify-self-center w-full sm:flex">
                     <button
                         type="submit"
+                        disabled={isLoading}
                         className="mt-2 py-0.5 px-4 rounded-sm text-white bg-blue-900 hover:bg-blue-800 cursor-pointer"
                     >
-                        Add Product
+                        {isLoading ? "Adding..." : "Add Product"}
                     </button>
                     {submitted}
                 </div>

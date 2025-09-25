@@ -5,7 +5,7 @@ export default function CreateProductPage() {
     return (
         <div className="text-center">
         <ProductCreate />
-        <Toaster richColors position="top-right" />
+        <Toaster richColors position="bottom-center" />
         </div>
     )
 }
