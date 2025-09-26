@@ -68,7 +68,7 @@ export default function AdminPage() {
                 <th className="text-left p-3 font-semibold text-blue-900">Title</th>
                 <th className="text-left p-3 font-semibold text-blue-900">Price</th>
                 <th className="text-left p-3 font-semibold text-blue-900">Stock</th>
-                <th className="text-left p-3 font-semibold text-blue-900">Actions</th>
+                <th className="text-right py-3 px-4 font-semibold text-blue-900">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -79,7 +79,7 @@ export default function AdminPage() {
                   <td className="p-3">{product.title}</td>
                   <td className="p-3">${product.price}</td>
                   <td className="p-3">{product.stock}</td>
-                  <td className="p-3 flex gap-2">
+                  <td className="p-3 flex justify-end gap-2">
                     <Link 
                       href={`/admin/update/${product.id}`} 
                       className="bg-yellow-100 text-yellow-900 px-3 py-1 rounded hover:bg-yellow-200"
