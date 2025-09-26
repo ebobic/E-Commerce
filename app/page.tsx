@@ -14,7 +14,7 @@ export default function Home() {
       <FeaturedProduct />
       <AboutUs />
       <ContactForm />
-      <Toaster richColors position="bottom-center" />
+      
     </main>
     );
 }
