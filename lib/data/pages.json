@@ -5,11 +5,11 @@
             "label": "Products"
         },
         {
-            "href": "/#about",
+            "href": "/about",
             "label": "About"
         },
         {
-            "href": "/#contact",
+            "href": "/contact",
             "label": "Contact"
         }
     ]
