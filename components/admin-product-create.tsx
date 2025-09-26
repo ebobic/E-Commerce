@@ -3,26 +3,41 @@
 import React, { useState, useEffect } from "react";
 import Form from "next/form";
 import { toast } from "sonner";
-import { fetchAllCategories } from "@/lib/data/product-data";
+import { addNewProduct, fetchAllCategories } from "@/lib/data/product-data";
 import { useRouter } from "next/navigation";
 
 export default function ProductCreate() {
-  const [title, setTitle] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [productData, setProduct] = useState({
+    id: 195,
+    title: "",
+    description: "",
+    category: "Beauty",
+    price: 99.99,
+    discountPercentage: 10,
+    rating: 4.5,
+    stock: 50,
+    tags: [] as any[],
+    brand: "",
+    sku: "",
+    weight: "",
+    dimensions: { width: 10, height: 20, depth: 5 },
+    warrantyInformation: "1 year warranty",
+    shippingInformation: "Ships in 3-5 business days",
+    availabilityStatus: "In Stock",
+    reviews: [],
+    returnPolicy: "30-day return policy",
+    minimumOrderQuantity: 1,
+    meta: {
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      barcode: "",
+      qrCode: "",
+    },
+    images: ["https://example.com/image1.jpg"],
+    thumbnail: "https://example.com/thumbnail.jpg",
+  })
+
   const [categories, setCategories] = useState<any[]>([]);
-  const [category, setCategory] = useState<string>("Beauty");
-  const [price, setPrice] = useState<string>("");
-  const [discount, setDiscount] = useState<string>("");
-  const [stock, setStock] = useState<string>("");
-  const [tags, setTags] = useState<string>("");
-  const [brand, setBrand] = useState<string>("");
-  const [weight, setWeight] = useState<string>("");
-  const [width, setWidth] = useState<string>("");
-  const [heigth, setHeight] = useState<string>("");
-  const [depth, setDepth] = useState<string>("");
-  const [images, setImages] = useState<string>(
-    "https://example.com/image1.jpg"
-  );
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +49,7 @@ export default function ProductCreate() {
       try {
         const fetchedCategories = await fetchAllCategories();
         setCategories(fetchedCategories);
+        setProduct((prev) => ({ ...prev, categories: fetchedCategories }));
       } catch (error) {
         console.error("Failed to fetch categories:", error);
         toast.error("Failed to load categories.");
@@ -43,33 +59,19 @@ export default function ProductCreate() {
     loadCategories();
   }, []);
 
-  const handleSubmit = () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setProduct((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (formData: FormData) => {
     setIsLoading(true);
     setError(null);
     try {
-      fetch("https://dummyjson.com/products/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: { title },
-          description: { description },
-          category: { category },
-          price: { price },
-          discount: { discount },
-          stock: { stock },
-          tags: { tags },
-          brand: { brand },
-          weight: { weight },
-          width: { width },
-          heigth: { heigth },
-          depth: { depth },
-          images: { images },
-        }),
-      })
-        .then((res) => res.json())
-        .then(console.log);
+      const response = await addNewProduct(productData)
+      console.log(response);
       setSubmitted(true);
-      toast.success(`${title} added successfully!`);
+      toast.success(`${productData.title} added successfully!`);
       router.refresh();
       router.push("/admin");
     } catch (err) {
@@ -101,7 +103,7 @@ export default function ProductCreate() {
                 id="title"
                 aria-label="Create product - Title"
                 required
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={handleChange}
               />
             </div>
 
@@ -115,7 +117,7 @@ export default function ProductCreate() {
                   name="description"
                   id="description"
                   aria-label="Create product - Description"
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -130,7 +132,7 @@ export default function ProductCreate() {
                 className="px-1 py-1 rounded-sm bg-blue-100 w-full"
                 aria-label="Create product - Category"
                 required
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={handleChange}
               >
                 {categories.map((category, index) => (
                   <option key={index} value={category.name}>
@@ -150,7 +152,7 @@ export default function ProductCreate() {
                 name="tags"
                 id="tags"
                 aria-label="Create product - Tags"
-                onChange={(e) => setTags(e.target.value)}
+                onChange={handleChange}
               />
             </div>
 
@@ -164,7 +166,7 @@ export default function ProductCreate() {
                 name="brand"
                 id="brand"
                 aria-label="Create product - Brand"
-                onChange={(e) => setBrand(e.target.value)}
+                onChange={handleChange}
               />
             </div>
 
@@ -180,7 +182,7 @@ export default function ProductCreate() {
                 id="stock"
                 aria-label="Create product - Stock"
                 required
-                onChange={(e) => setStock(e.target.value)}
+                onChange={handleChange}
               />
             </div>
 
@@ -196,7 +198,7 @@ export default function ProductCreate() {
                 id="price"
                 aria-label="Create product - Price"
                 required
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={handleChange}
               />
 
               <label htmlFor="discount" className="flex flex-row mt-2 gap-2">
@@ -208,7 +210,7 @@ export default function ProductCreate() {
                   name="discount"
                   id="discount"
                   aria-label="Create product - Discount"
-                  onChange={(e) => setDiscount(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -217,13 +219,12 @@ export default function ProductCreate() {
               <label htmlFor="weight" className="">
                 Weight:
                 <input
-                  type="tel"
-                  pattern="[0-9,.]*"
+                  type="text"
                   className="px-2 rounded-sm bg-blue-100 w-full"
                   name="weight"
                   id="weight"
                   aria-label="Create product - Weight"
-                  onChange={(e) => setWeight(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -239,7 +240,7 @@ export default function ProductCreate() {
                   name="width"
                   id="width"
                   aria-label="Create product - Width"
-                  onChange={(e) => setWidth(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
               <label htmlFor="height" className="flex mt-1 gap-2">
@@ -251,7 +252,7 @@ export default function ProductCreate() {
                   name="height"
                   id="height"
                   aria-label="Create product - Height"
-                  onChange={(e) => setHeight(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
               <label htmlFor="depth" className="flex mt-1 gap-[12px]">
@@ -263,7 +264,7 @@ export default function ProductCreate() {
                   name="depth"
                   id="depth"
                   aria-label="Create product - Depth"
-                  onChange={(e) => setDepth(e.target.value)}
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -277,7 +278,7 @@ export default function ProductCreate() {
                 id="image"
                 multiple
                 aria-label="Create product - Image"
-                onChange={(e) => setImages(e.target.value)}
+                onChange={handleChange}
               />
             </label>
 
