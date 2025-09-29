@@ -3,13 +3,14 @@ import { fetchAllCategories, fetchProductById } from "@/lib/data/product-data";
 import UpdateProductForm from "@/components/admin-product-update";
 
 interface UpdateProductPageProps {
-    params: {id: string};
+    params: Promise<{ id: string }>;
 }
 
 
 export default async function UpdateProductPage({ params }: UpdateProductPageProps) {
-    const product: Product = await fetchProductById(params.id);
-    const categories = await fetchAllCategories()
+    const { id } = await params;
+    const product: Product = await fetchProductById(id);
+    const categories = await fetchAllCategories();
 
     return (
         <div className="p-6 bg-slate-100 min-h-screen">

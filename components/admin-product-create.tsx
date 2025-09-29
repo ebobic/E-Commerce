@@ -273,7 +273,7 @@ export default function ProductCreate() {
               Image:
               <input
                 type="file"
-                className="px-2 rounded-sm bg-blue-100 w-full"
+                className="px-2 rounded-sm bg-blue-100 w-full hover:cursor-pointer"
                 name="image"
                 id="image"
                 multiple
