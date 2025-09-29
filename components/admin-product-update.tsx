@@ -43,7 +43,7 @@ export default function UpdateProductForm({
       // Try to update the product with the new data on backend
       const updated = await updateProduct(product.id.toString(), updatedData);
       setMessage("✅ Product updated successfully!");
-      router.push("/admin");
+      /* router.push("/admin"); */
       toast.success("Product updated successfully!");
       console.log("Updated product:", updated);
     } catch (error) {
@@ -186,9 +186,9 @@ export default function UpdateProductForm({
         <button
           type="button"
           onClick={() => router.push("/admin")}
-          className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+          className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 hover:cursor-pointer"
         >
-          Cancel
+          Return
         </button>
       </div>
 

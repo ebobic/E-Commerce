@@ -73,7 +73,7 @@ export default function ProductCreate() {
       setSubmitted(true);
       toast.success(`${productData.title} added successfully!`);
       router.refresh();
-      router.push("/admin");
+      /* router.push("/admin"); */
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
@@ -301,7 +301,7 @@ export default function ProductCreate() {
                 onClick={() => router.push("/admin")}
                 className="bg-gray-200 text-gray-800 mt-2 px-4 py-2 rounded hover:bg-gray-300 cursor-pointer"
               >
-                Cancel
+                Return
               </button>
             </div>
           </Form>

@@ -26,7 +26,7 @@ export default async function FeaturedProductList({ limit, skip, category, numbe
 
   return (
     <section className="flex flex-col relative items-center pt-10">
-      <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
+      <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 place-items-center">
         {products.map((product: Product) => (
           <ProductCard key={product.id} {...product} />
         ))}
