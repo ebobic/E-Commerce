@@ -11,7 +11,7 @@ export default function QuantitySelector() {
     
 
     return (
-      <div className="inline-flex items-center gap-1 border py-2 rounded-3xl w-1/5 border-gray-300 border-opacity-50">
+      <div className="inline-flex items-center justify-center gap-1 border py-2 rounded-3xl w-1/5 border-gray-300 border-opacity-50">
         
         {/* Render a disabled or active "-" button depending on decreaseDisabled state */}
         {decreaseDisabled ? (
