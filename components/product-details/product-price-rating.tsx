@@ -10,9 +10,9 @@ export default function ProductPriceAndRating({
   reviewCount,
 }: ProductPriceAndRatingProps) {
   return (
-    <div className="flex flex-wrap md:flex-nowrap justify-between items-center p-1">
+    <div className="flex flex-wrap md:flex-nowrap justify-between items-center p-1 text-neutral-800">
       <span className="text-lg md:text-xl font-semibold">${price}</span>
-      <div className="md:block w-px h-4 bg-black mx-2" />
+      <div className="md:block w-px h-4 bg-neutral-800 mx-2" />
       {/* Rating Stars */}
       <div className="flex items-center gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
