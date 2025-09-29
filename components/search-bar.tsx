@@ -77,7 +77,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                     setSearchOpen(newState);
                     onSearchToggle?.(newState);
                 }}
-                className="w-[25px] h-[25px] relative"
+                className="w-[25px] h-[25px] relative hover:cursor-pointer"
             >
                 <Image
                     src="/search.svg"
