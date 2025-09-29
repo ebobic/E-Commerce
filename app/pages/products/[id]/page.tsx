@@ -2,7 +2,7 @@ import ProductDetailsCard from "@/components/product-details/details-card";
 import { fetchProductById } from "@/lib/data/product-data";
 import SimilarProducts from "@/components/similar-products";
 import ReviewsSection from "@/components/reviews-section";
-import NextBreadcrumb from "@/components/breadcrumb";
+import NextBreadcrumb from "@/components/breadcrumb/breadcrumb";
 import { Toaster } from 'sonner';
 
 export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {

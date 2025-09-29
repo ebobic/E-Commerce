@@ -56,7 +56,6 @@ const NextBreadcrumb = ({
             paths === href ? `${listClasses} ${activeClasses}` : listClasses;
           // Use displaySegments for label, fallback to original link
             let label = displaySegments[index] ?? link;
-            console.log("label: ", label);
           let itemLink = capitalizeLinks
             ? label[0].toUpperCase() + label.slice(1, label.length)
             : label;
