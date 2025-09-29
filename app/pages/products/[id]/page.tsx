@@ -11,17 +11,14 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
   const productData = await fetchProductById(productId.id);
 
   return (
-
     <>
       <NextBreadcrumb
-        homeElement={'Home'}
-        activeClasses='text-blue-900!'
-        containerClasses='flex py-5'
-        listClasses='hover:underline mx-2'
+        homeElement={"Home"}
+        activeClasses="text-blue-900!"
+        containerClasses="flex py-5"
+        listClasses="hover:underline mx-2"
         capitalizeLinks
       />
-
-
       {<ProductDetailsCard product={productData} />}
       <ReviewsSection reviews={productData.reviews} productTitle={productData.title} />
       <SimilarProducts category={productData.category} id={productData.id}/>
