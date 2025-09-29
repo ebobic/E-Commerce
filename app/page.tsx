@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <BenefitsBanner />
       <FeaturedProduct />
-      <AboutUs />
+      <AboutUs showLink={true}/>
       <ContactForm />
       
     </main>

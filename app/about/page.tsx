@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       <div className="pt-24 pb-12">
-        <AboutUs />
+        <AboutUs showLink={false}/>
       </div>
       <Toaster />
     </main>
