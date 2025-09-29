@@ -14,7 +14,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(imagesToRender[0]);  // Keeping track of which image is currently selected, default is first in the list
 
     return (
-        <div className="flex items-center justify-center w-full gap-4">
+        <div className="flex items-center justify-center m-auto w-9/10 lg:w-1/2 gap-4">
 
         {/* Thumbnails that show if there is more than 1 image to render*/}
         {imagesToRender.length > 1 && (
@@ -40,7 +40,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
         )}
 
         {/* Main Image */}
-        <div className="relative flex-1 max-w-[600px] aspect-square rounded-lg overflow-hidden bg-blue-50">
+        <div className="relative flex-1  max-w-[800px] aspect-square rounded-lg overflow-hidden bg-blue-50">
             <Image
             src={selectedImage}
             alt={`Image of ${title}`}
