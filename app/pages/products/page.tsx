@@ -2,18 +2,10 @@ import SearchBarProducts from "@/components/search-bar-products"
 import FeaturedProductList from "@/components/featured-product-list"
 import ProductsList from "@/components/products-list"
 import ProductCategoryList from "@/components/product-category-list";
-import CategoryList from "@/components/category-list"
-import CategoryListMenu from "@/components/category-list-menu";
+import CategoryList from "@/components/categories/category-list"
 import { fetchProductsData, fetchSearchProducts } from "@/lib/data/product-data"
 import Pagination from "@/components/pagination";
 import NextBreadcrumb from "@/components/breadcrumb";
-import { useState } from "react";
-
-function menu() {
-  "use client"
-  const [menuOpen, setMenuOpen] = useState(false);
-  return menu
-}
 
 export default async function Products({
   searchParams
@@ -42,7 +34,6 @@ export default async function Products({
 
   return (
     <section className="flex justify-around">
-      <CategoryListMenu setMenuOpen={menu}/>
       <div className="px-6 py-1 hidden md:block">
         <aside className="p-4 border text-sm md:w-full">
             <h3 className="pb-4 font-semibold">Categories</h3>
