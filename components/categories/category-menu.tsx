@@ -1,4 +1,4 @@
-import CategoryLink from './category-link';
+import CategoryLink from '@/components/categories/category-link';
 
 type CategoryMenuProps = {
     setMenuOpen: (open: boolean) => void;

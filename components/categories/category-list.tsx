@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import CategoryIcon from "./category-icons";
-import CategoryMenu from "./category-menu";
+import CategoryIcon from "@/components/categories/category-icons";
+import CategoryMenu from "@/components/categories/category-menu";
 
 export default function CategoryList() {
     const [menuOpen, setMenuOpen] = useState(false);
