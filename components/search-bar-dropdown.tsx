@@ -1,7 +1,9 @@
 "use client"
 
 import { Product } from "@/lib/interfaces/products";
-import ProductCardNew from "./product-card/product-card-new";
+import ProductCard from "./product-card/product-card";
+import Link from "next/link";
+import Image from "next/image";
 
 interface SearchBarDropdownProps {
     searchResults: Product[];
@@ -29,29 +31,24 @@ export default function SearchBarDropdown({
         );
     }
 
-    // Show no results state
+    // Show no results state - just return empty div
     if (searchResults.length === 0) {
-        return (
-            <div className="border-t border-gray-200 p-8 text-center">
-                <p className="text-gray-500">No products found for "{searchQuery}"</p>
-                <p className="text-sm text-gray-400 mt-1">Try a different search term</p>
-            </div>
-        );
+        return null;
     }
 
     // Show search results
     return (
         <div className="border-t border-gray-200">
-            <div className="p-4">
-                {/* Product Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-h-[900px] overflow-y-auto">
+            <div className="p-2 md:px-4">
+                {/* Product Grid - noMargin removes card margins so grid gap controls spacing */}
+                <div className="grid gap-2 grid-cols-2 sm:grid-cols-1 md:grid-cols-8 justify-items-stretch max-h-[900px] overflow-y-auto">
                     {searchResults.map((product) => (
-                        <ProductCardNew key={product.id} {...product} />
+                        <ProductCard key={product.id} {...product} noMargin={true} />
                     ))}
                 </div>
                 
                 {/* View all rsults Link */}
-                {searchResults.length >= 6 && (
+                {searchResults.length >= 8 && (
                     <div className="text-center mt-4">
                         <a 
                             href={`/pages/products?search=${encodeURIComponent(searchQuery)}`} 

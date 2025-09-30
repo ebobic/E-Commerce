@@ -8,8 +8,9 @@ export default async function FeaturedProduct() {
   
     return (
       <section>
-        <h2 className="pt-10 text-center text-4xl font-jersey font-medium mb-4">
-        Feutured Products
+        {/* Responsive heading: smaller on mobile (text-xl), full size on desktop (text-4xl) */}
+        <h2 className="pt-10 text-center text-xl sm:text-4xl font-jersey font-medium mb-2">
+        Featured Products
         </h2>
         <FeaturedProductList limit={limit} skip={skip} />
         </section>

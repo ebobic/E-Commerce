@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ProductCardNew(product: Product) {
   return (
     <Link href={`/pages/products/${product.id}`} className="block">
-      <div className="w-[270px] h-[360px] bg-white rounded-lg border border-gray-200 overflow-hidden mx-auto flex flex-col relative">
+      <div className="w-full max-w-[270px] h-[360px] bg-white rounded-lg border border-gray-200 overflow-hidden mx-auto flex flex-col relative">
         {/* Product Image */}
         <div className="relative w-full h-[220px] bg-blue-100">
           <Image

@@ -39,8 +39,8 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                 index === self.findIndex(p => p.id === product.id)
             );
 
-            // Limit to 6 results for dropdown display
-            const limitedResults = uniqueResults.slice(0, 6);
+            // Limit to 8 results for dropdown display
+            const limitedResults = uniqueResults.slice(0, 8);
             setSearchResults(limitedResults);
         } catch (error) {
             console.error('Search error:', error);
