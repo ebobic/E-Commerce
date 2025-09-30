@@ -8,11 +8,11 @@ export default function ProductCardHeader({
   price,
 }: ProductCardHeaderProps) {
   return (
-    <div className="flex justify-between gap-x-4 items-center p-1">
-      <h4 className="text-xs font-extrabold overflow-hidden text-ellipsis whitespace-nowrap">
+    <div className="flex-1">
+      <h3 className="font-bold text-sm text-gray-800 mb-1 line-clamp-2 text-center">
         {title}
-      </h4>
-      <span className="text-xs font-normal">${price}</span>
+      </h3>
     </div>
   );
 }
+
