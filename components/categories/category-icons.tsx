@@ -7,7 +7,7 @@ type IconProps = {
 
 export default function CategoryIcon({menuOpen, setMenuOpen}: IconProps) {
     return (
-        <div className="">        
+        // <div className="">        
             <button 
                 className="w-[130px] h-[15px] hover:cursor-pointer"
                 onClick={() => {
@@ -21,6 +21,6 @@ export default function CategoryIcon({menuOpen, setMenuOpen}: IconProps) {
                     objectFit="contain"
                 />
             </button>
-        </div>
+        // </div>
     )
 }

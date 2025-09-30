@@ -11,17 +11,17 @@ export default function CategoryMenu({setMenuOpen}: CategoryMenuProps) {
     return (
         <ul className="flex flex-col absolute top-10 w-[30vw] pb-3 border rounded-sm bg-blue-50 text-neutral-800 z-45">
             <h2 className="text-xl p-4">Categories</h2>
-            {categoryArray.map((category) => (
+            {/* {categoryArray.map((category) => ( */}
                 <li
-                    key={category}
-                    // type="button"
-                    // className="px-8 text-start cursor-pointer hover:text-blue-900"
+                    // {/* key={category} */}
+                    // {/* // type="button" */}
+                    // {/* // className="px-8 text-start cursor-pointer hover:text-blue-900" */}
                     onClick={() => setMenuOpen(false)}
                 >
                     {/* {formatString(category)} */}
-                    <CategoryLink {...category} />
+                    <CategoryLink {...categoryArray} />
                 </li>
-            ))}
+            {/* ))} */}
         </ul>
     )
 }
