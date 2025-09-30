@@ -30,35 +30,34 @@ const categoryArray = [
   "womens-watches",
 ];
 
-export default function CategoryList() {
+export default function CategoryLink(category: string[]) {    
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  
+  const handleClick = (category: string) => {
+  const params = new URLSearchParams(searchParams);
 
-  const handleClick = (cat: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    // Reset to page 1 when category changes
-    params.delete("page");
-
-    const category = cat;
-    params.set("category", category);
-
-    replace(`${pathname}?${params.toString()}`);
-  };
-
+  // Reset to page 1 when category changes
+  params.delete("page");
+  
+  params.set('category', category);
+  
+  replace(`${pathname}?${params.toString()}`);
+  }
+  
   return (
-    <div className="grid grid-cols-1 justify-start">
-      {categoryArray.map((cat) => (
-        <button
-          key={cat}
-          type="button"
-          className="text-start cursor-pointer hover:text-blue-900"
-          onClick={() => handleClick(cat)}
-        >
-          {formatString(cat)}
-        </button>
+    <>
+      {categoryArray.map((category) => (
+      <button
+        key={category}
+        type="button"
+        className="px-8 text-start w-full cursor-pointer hover:text-blue-900"
+        onClick={() => handleClick(category)}
+      >
+        {formatString(category)}
+      </button>
       ))}
-    </div>
-  );
+    </>
+  )
 }
