@@ -8,7 +8,7 @@ const categoryArray = ["beauty", "fragrances", "furniture", "groceries", "home-d
 
 export default function CategoryMenu({setMenuOpen}: CategoryMenuProps) {
     return (
-        <ul className="flex flex-col absolute top-10 w-[30vw] pb-3 border rounded-sm bg-blue-50 text-neutral-800 z-45">
+        <ul className="flex flex-col absolute top-10 w-[50vw] sm:w-[30vw] pb-3 border rounded-sm bg-blue-50 text-neutral-800 z-45">
             <h2 className="text-xl p-4">Categories</h2>
             <li
                 onClick={() => setMenuOpen(false)}

@@ -41,7 +41,7 @@ export default function SearchBarProducts() {
                 alt="Search icon"
                 width={50}
                 height={50}
-                className="absolute opacity-25 right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none"
+                className="absolute opacity-0 sm:opacity-25 right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none"
             />
         </section>
     )
