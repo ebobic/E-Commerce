@@ -1,61 +1,43 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { formatString } from '@/lib/data/utils';
 
-type PageLink = {
-  href: string;
-  label: string;
-};
+// type categoryProps = {
+//   category: string;
+// };
 
-export default function CategoriesList(link: PageLink) {
+const categoryArray = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"]
+
+// export default function CategoryLink(category: categoryProps) {
+export default function CategoryLink(category: string, id?: string) {    
+    const searchParams = useSearchParams();
     const pathname = usePathname();
-
-    const anchorLinks: Record<string, string> = {
-        Home: "#home",
-        About: "#about",
-        Contact: "#contact",
-    };
-
-    // To make the page scroll smoothly when clicking navbar links
-    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
-        e.preventDefault();
-        const element = document.querySelector(anchor);
-        if (element) {
-            // Make sure content isn't hidden behind the navbar!
-            const navbarHeight = 80;
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-            
-            window.scrollTo({
-                top: elementPosition,
-                behavior: 'smooth'
-            });
-        }
-    };
-
-    // if on start page and link is Home, About or Contact, render anchor link
-    if (pathname === "/" &&
-        (link.label === "Home" || link.label === "About" || link.label === "Contact")
-    ) {
-        return (
-            <Link 
-                href={anchorLinks[link.label]}
-                onClick={(e) => handleAnchorClick(e, anchorLinks[link.label])}
-            >
-                {link.label}
-            </Link>
-        );
-    } else {
-        // otherwise normal navigation link
-        return <></>
-            // <Link href={link.href}>{link.label}</Link>
-            // <button
-            //     key={cat}
-            //     type="button"
-            //     className="text-start cursor-pointer hover:text-blue-900"
-            //     onClick={() => handleClick(cat)}
-            // >
-            //     {formatString(cat)}
-            // </button>
+    const { replace } = useRouter();
+    
+    const handleClick = (category: string) => {
+    const params = new URLSearchParams(searchParams);
+    
+    // const category = category;
+    params.set('category', category);
+    
+    replace(`${pathname}?${params.toString()}`);
     }
+   
+    return (
+        <ul className="">
+            <div className="grid grid-cols-1">
+                {categoryArray.map((category) => (
+                <button
+                    key={category}
+                    type="button"
+                    className="px-8 text-start cursor-pointer hover:text-blue-900"
+                    onClick={() => handleClick(category)}
+                >
+                    {formatString(category)}
+                </button>
+                ))}
+            </div>
+        </ul>
+    )
 }
