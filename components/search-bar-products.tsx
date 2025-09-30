@@ -11,6 +11,10 @@ export default function SearchBarProducts() {
 
     const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
+
+    // Reset to page 1 when search changes
+    params.delete("page");
+    
     if (term) {
       params.set('search', term);
     } else {
