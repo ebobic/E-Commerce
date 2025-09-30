@@ -9,23 +9,19 @@ export default async function Products({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   return (
-    <section className="flex justify-around">
-      <div className="px-6 py-1 w-2/10">
-        <div className="w-full">
-          <NextBreadcrumb
-            homeElement={'Home'}
-            activeClasses='text-blue-900!'
-            containerClasses='flex py-5'
-            listClasses='hover:underline mx-2'
-            capitalizeLinks
-          />
-        </div>
+    <section>
+      <NextBreadcrumb
+        homeElement={'Home'}
+        activeClasses='text-blue-900!'
+        containerClasses='flex py-5'
+        listClasses='hover:underline mx-2'
+        capitalizeLinks
+      />
         <div className="flex">
           <CategoryList />
           <SearchBarProducts />
         </div>
         <ProductsList searchParams={searchParams} />
-      </div>
     </section>
   );
 }
