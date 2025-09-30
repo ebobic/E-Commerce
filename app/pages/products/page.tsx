@@ -52,14 +52,7 @@ export default async function Products({
           capitalizeLinks
         />
         <SearchBarProducts />
-        {category && category !== "" ? (
-          <ProductCategoryList searchQuery={category} />
-        ) : search && search !== "" ? (
-          <ProductsList searchQuery={search} />
-        ) : (
-          <FeaturedProductList limit={pageLimit} skip={skip} />
-        )}
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
+        <ProductsList searchParams={searchParams} />
       </div>
     </section>
   );
