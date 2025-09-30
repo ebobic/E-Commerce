@@ -1,3 +1,4 @@
+'use client';
 import ProductCardHeader from "./product-card-header";
 import ProductCardButton from "./product-card-button";
 
@@ -18,10 +19,8 @@ export default function ProductCardDetails({
         <span className="text-base font-bold text-blue-900">
           ${price}
         </span>
-        <ProductCardButton />
+        <ProductCardButton title={title} />
       </div>
     </div>
   );
 }
-
-

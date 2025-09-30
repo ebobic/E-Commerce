@@ -1,4 +1,3 @@
-
 import FeaturedProductList from "./featured-product-list";
 
 

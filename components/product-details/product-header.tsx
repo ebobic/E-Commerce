@@ -6,11 +6,11 @@ interface ProductHeaderProps {
 
 export default function ProductHeader({ title }: ProductHeaderProps) {
   return (
-    <div className="flex justify-between items-start p-1">
-      <h2 className="text-lg md:text-xl lg:text-2xl font-bold overflow-hidden text-ellipsis whitespace-nowrap max-w-[calc(100%-30px)]">
+    <div className="flex justify-between items-start ">
+      <h1 className="font-bold text-2xl lg:text-3xl text-neutral-800 text-ellipsis whitespace-wrap ">
         {title}
-      </h2>
-      <div className="w-[20px] h-[20px] relative opacity-30 hover:opacity-70 transition-opacity cursor-pointer">
+      </h1>
+      <div className="top-2 left-0 w-[20px] h-[20px] relative opacity-50 hover:opacity-70 transition-opacity cursor-pointer ml-6">
         <Image
           src="/heart.svg"
           alt="Add to favorites"

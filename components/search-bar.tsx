@@ -116,7 +116,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                     setSearchOpen(newState);
                     onSearchToggle?.(newState);
                 }}
-                className="w-[25px] h-[25px] relative"
+                className="w-[25px] h-[25px] relative hover:cursor-pointer"
             >
                 <Image
                     src="/search.svg"
@@ -137,7 +137,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                     <div className="py-3">
                         <div className="flex items-center px-4 py-3">
                             {/* Search Icon */}
-                            <div className="w-5 h-5 relative mr-3">
+                            <div className="w-[24px] h-[24px] relative mr-3">
                                 <Image
                                     src="/search.svg"
                                     alt="Search Icon"
