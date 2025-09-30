@@ -13,30 +13,23 @@ export default function CategoryLink(category: string[]) {
     const handleClick = (category: string) => {
     const params = new URLSearchParams(searchParams);
     
-    // const category = category;
     params.set('category', category);
     
     replace(`${pathname}?${params.toString()}`);
     }
    
     return (
-
-        // <ul className="">
-            // <div className="grid grid-cols-1">
-            <>
-                {categoryArray.map((category) => (
-                <button
-                    key={category}
-                    type="button"
-                    className="px-8 text-start w-full cursor-pointer hover:text-blue-900"
-                    onClick={() => handleClick(category)}
-                >
-                    {formatString(category)}
-                </button>
-                ))}
-            </>
-            // </div>
-        // </ul>
-        
+        <>
+            {categoryArray.map((category) => (
+            <button
+                key={category}
+                type="button"
+                className="px-8 text-start w-full cursor-pointer hover:text-blue-900"
+                onClick={() => handleClick(category)}
+            >
+                {formatString(category)}
+            </button>
+            ))}
+        </>
     )
 }

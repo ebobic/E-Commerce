@@ -30,8 +30,6 @@ export default async function Products({
 
   const totalPages = Math.ceil(totalCount / pageLimit);
   
-  
-
   return (
     <section className="flex justify-around">
       <div className="w-full">
@@ -51,5 +49,4 @@ export default async function Products({
       </div>
     </section>
   )
-
 }
