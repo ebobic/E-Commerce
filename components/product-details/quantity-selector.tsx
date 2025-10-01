@@ -11,12 +11,12 @@ export default function QuantitySelector() {
     
 
     return (
-      <div className="inline-flex items-center justify-center gap-1 border py-2 rounded-3xl w-1/5 border-gray-300 border-opacity-50">
+      <div className="inline-flex items-center justify-center gap-1 border py-2 rounded-3xl w-1/5 border-gray-300 ">
         
         {/* Render a disabled or active "-" button depending on decreaseDisabled state */}
         {decreaseDisabled ? (
           <button
-            className="h-full w-8 flex items-center justify-center pointer-events-none opacity-50"
+            className="h-full w-8 flex items-center justify-center pointer-events-none opacity-70"
             aria-label="Decrease quantity"
             onClick={handleDecrease}
           >
@@ -38,7 +38,7 @@ export default function QuantitySelector() {
         {/* Render a disabled or active "+" button depending on increaseDisabled state */}
         {increaseDisabled ? (
           <button
-            className="h-full w-8 flex items-center justify-center pointer-events-none opacity-50"
+            className="h-full w-8 flex items-center justify-center pointer-events-none opacity-70"
             aria-label="Increase quantity"
             onClick={handleIncrease}
           >
