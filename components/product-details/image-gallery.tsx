@@ -27,9 +27,10 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
                             ${selectedImage === img ? "border-blue-800 border-1" : "border-transparent"} 
                         `}
                     >
+                        <span className="hidden">View image</span>
                         <Image
                             src={img}
-                            alt={`${title} thumbnail`}
+                            alt={""}
                             fill
                             className="object-contain"
                             sizes="(max-width: 640px) 60px, (max-width: 1024px) 80px, 100px"
@@ -43,7 +44,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
         <div className="relative flex-1  max-w-[800px] aspect-square rounded-lg overflow-hidden bg-blue-50">
             <Image
             src={selectedImage}
-            alt={`Image of ${title}`}
+            alt={""}
             fill
             className="object-contain"
             sizes="(max-width: 640px) 200px, (max-width: 1024px) 400px, 600px"
