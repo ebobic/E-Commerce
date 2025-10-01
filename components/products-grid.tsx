@@ -14,6 +14,7 @@ interface ProductsGridProps {
   isLoading?: boolean;
   searchQuery?: string;
   showViewAll?: boolean;
+  onItemClick?: () => void;
 }
 
 export default function ProductsGrid({
@@ -24,6 +25,7 @@ export default function ProductsGrid({
   isLoading = false,
   searchQuery = "",
   showViewAll = false,
+  onItemClick,
 }: ProductsGridProps) {
   
   // Loading state
@@ -67,7 +69,7 @@ export default function ProductsGrid({
   const gridContent = (
     <ul className={`${gridClasses[variant]} p-4 w-full place-items-stretch`}>
       {products.map((product: Product) => (
-        <li key={product.id} className="w-full">
+        <li key={product.id} onClick={onItemClick} className="w-full">
           <ProductCard {...product} />
         </li>
       ))}
@@ -86,6 +88,7 @@ export default function ProductsGrid({
               <a 
                 href={`/pages/products?search=${encodeURIComponent(searchQuery)}`} 
                 className="text-blue-900 hover:text-blue-800 font-bold"
+                onClick={onItemClick}
               >
                 View all products
               </a>

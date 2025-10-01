@@ -25,6 +25,7 @@ export default function SearchBarDropdown({
             isLoading={isLoading}
             searchQuery={searchQuery}
             showViewAll={true}
+            onItemClick={onItemClick}
         />
     );
 }
