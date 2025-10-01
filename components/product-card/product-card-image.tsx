@@ -16,6 +16,7 @@ export default function ProductCardImage({
         src={imageUrl}
         alt={""}
         fill
+        loading="eager"
         className="object-contain"
       />
     </div>
