@@ -2,6 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useDebouncedCallback } from 'use-debounce';
+import { Product } from '@/lib/interfaces/products';
+import { fetchSearchProducts, fetchProductsByCategory } from '@/lib/data/product-data';
+import SearchBarDropdown from './search-bar-dropdown';
 
 interface SearchBarProps {
   onSearchToggle?: (isOpen: boolean) => void;
@@ -9,6 +13,9 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSearchToggle }: SearchBarProps) {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
@@ -38,6 +45,37 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [searchOpen, onSearchToggle]);
+    
+    // Search function with debouncing
+    const handleSearch = useDebouncedCallback(async (query: string) => {
+        if (!query.trim()) {
+            setSearchResults([]);
+            return;
+        }
+       setIsLoading(true);
+        try {
+            // Search both products and categories
+            const [productResults, categoryResults] = await Promise.all([
+                fetchSearchProducts(query),
+                fetchProductsByCategory(query)
+            ]);
+
+            // Combine results and remove duplicates
+            const combinedResults = [...productResults.products, ...categoryResults.products];
+            const uniqueResults = combinedResults.filter((product, index, self) => 
+                index === self.findIndex(p => p.id === product.id)
+            );
+
+            // Limit to 8 results for dropdown display
+            const limitedResults = uniqueResults.slice(0, 8);
+            setSearchResults(limitedResults);
+        } catch (error) {
+            console.error('Search error:', error);
+            setSearchResults([]);
+        } finally {
+            setIsLoading(false);
+        }
+    }, 300);
 
   // MOBILE/TABLET: Trigger keyboard when search dropdown opens
   useEffect(() => {
@@ -53,6 +91,7 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
       const backdrop = document.createElement("div");
       backdrop.id = "search-backdrop";
       backdrop.style.cssText = `
+
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -135,42 +174,48 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
                   objectFit="contain"
                   className="text-gray-400"
                 />
-              </div>
 
-              {/* Search Input */}
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder="Search for a product..."
-                className="flex-1 bg-transparent text-gray-600 placeholder-gray-600 focus:outline-none text-base font-medium"
-              />
-
-              {/* Close Button */}
-              <button
-                onClick={() => {
-                  setSearchOpen(false);
-                  onSearchToggle?.(false);
-                }}
-                className="w-5 h-5 relative ml-3 text-gray-600 hover:text-gray-800"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
+           
+                            </div>
+                            
+                            {/* Search Input */}
+                            <input
+                                ref={inputRef}
+                                type="text"
+                                placeholder="Search for a product..."
+                                value={searchQuery}
+                                onChange={(e) => {
+                                    setSearchQuery(e.target.value);
+                                    handleSearch(e.target.value);
+                                }}
+                                className="flex-1 bg-transparent text-gray-600 placeholder-gray-600 focus:outline-none text-base font-medium"
+                            />
+                            
+                            {/* Close Button */}
+                            <button
+                                onClick={() => {
+                                    setSearchOpen(false);
+                                    setSearchQuery('');
+                                    setSearchResults([]);
+                                    onSearchToggle?.(false);
+                                }}
+                                className="w-5 h-5 relative ml-3 text-gray-600 hover:text-gray-800"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        {/* Search Results Dropdown */}
+                        <SearchBarDropdown 
+                            searchResults={searchResults}
+                            isLoading={isLoading}
+                            searchQuery={searchQuery}
+                        />
+                    </div>
+                </div>
+            )}
+        </>
+    );
 }
