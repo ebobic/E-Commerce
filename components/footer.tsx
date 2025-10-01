@@ -13,10 +13,10 @@ const socialLinks = [
 
 // Nav links
 const navigationLinks = [
-    { name: "Home", href: "/", active: true },
-    { name: "Products", href: "#", active: true },
-    { name: "About Us", href: "#", active: true },
-    { name: "Contact", href: "#", active: true }
+    { name: "Home", href: "#", active: true },
+    { name: "Products", href: "/pages/products", active: true },
+    { name: "About Us", href: "/about", active: true },
+    { name: "Contact", href: "/contact", active: true }
 ];
 
 // Support links
@@ -40,9 +40,7 @@ export default function Footer() {
                 <div className="lg:hidden">
                     {/* Logo  - Centered on Mobile/Tablet */}
                     <div className="text-center mb-6 mt-2 md:mt-3">
-                        <Link href={"/"} className="cursor-pointer">
-                            <h2 className="text-3xl font-bold text-white">MegaMart</h2>
-                        </Link>
+                        <h2 className="text-3xl font-bold text-white">MegaMart</h2>
                         <div className="flex space-x-4 justify-center mt-4">
                             {socialLinks.map((social) => (
                                 <Link 
@@ -126,7 +124,7 @@ export default function Footer() {
                                                 className="text-white hover:text-gray-200 transition-colors duration-200 cursor-pointer"
                                             >
                                                 {link.name}
-                            </Link>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -135,17 +133,21 @@ export default function Footer() {
 
                         {/* Right Column - Newsletter */}
                         <div className="text-center">
-                            <h4 className="text-sm font-semibold mb-4 md:mb-6 uppercase tracking-wider text-white">Stay Updated</h4>
-                            <p className="text-sm text-white mb-4 md:mb-6 leading-relaxed">
-                                Get exclusive offers, new collections, and event updates delivered to your inbox.
-                            </p>
-                            <div className="space-y-3 md:space-y-4 max-w-64 mx-auto">
+                            <h3 className="text-sm font-semibold mb-1 uppercase tracking-wider text-white">Stay Updated</h3>
+                            <div className="space-y-3 md:space-y-4 mb-3 max-w-64 mx-auto">
+                                <label htmlFor="email" className="text-sm text-white leading-relaxed">Get exclusive offers, new collections, and event updates delivered to your inbox.</label>
                                 <input 
-                                    type="email" 
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    aria-label="email"
                                     placeholder="Enter your email" 
                                     className="w-full px-4 py-3 bg-blue-900/50 border border-blue-700/50 rounded-[50px] text-white placeholder-gray-400 text-sm focus:outline-none focus:border-blue-400 focus:bg-blue-900/70 transition-colors duration-150"
                                 />
-                                <button className="w-full bg-white text-blue-950 py-3 px-6 rounded-[50px] text-sm font-semibold hover:bg-gray-100 hover:shadow-md transition-all duration-150 cursor-pointer flex items-center justify-center gap-2">
+                                <button
+                                    className="w-full bg-white text-blue-950 py-3 px-6 rounded-[50px] text-sm font-semibold hover:bg-gray-100 hover:shadow-md transition-all duration-150 cursor-pointer flex items-center justify-center gap-2"
+                                    type="submit"
+                                >
                                     <span>Subscribe</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor" className="w-3 h-3">
                                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
@@ -160,9 +162,7 @@ export default function Footer() {
                 <div className="hidden lg:flex lg:items-center lg:justify-center lg:min-h-[225px] lg:gap-16">
                     {/* Logo Section */}
                     <div className="flex flex-col items-center text-center">
-                        <Link href={"/"} className="cursor-pointer">
-                            <h2 className="text-3xl font-bold text-white">MegaMart</h2>
-                        </Link>
+                        <h2 className="text-3xl font-bold text-white">MegaMart</h2>
                         <div className="flex space-x-4 justify-center mt-4">
                             {socialLinks.map((social) => (
                                 <Link 
@@ -186,7 +186,7 @@ export default function Footer() {
                     <div className="flex gap-12">
                         {/* Support */}
                         <div className="text-center">
-                            <h4 className="text-sm font-semibold mb-2 uppercase tracking-wider text-white">Support</h4>
+                            <h3 className="text-sm font-semibold mb-2 uppercase tracking-wider text-white">Support</h3>
                             <ul className="space-y-3 text-sm">
                                 {supportLinks.map((link) => (
                                     <li key={link.name}>
@@ -203,7 +203,7 @@ export default function Footer() {
 
                         {/* Navigation */}
                         <div className="text-center">
-                            <h4 className="text-sm font-semibold mb-2 uppercase tracking-wider text-white">Navigation</h4>
+                            <h3 className="text-sm font-semibold mb-2 uppercase tracking-wider text-white">Navigation</h3>
                             <ul className="space-y-3 text-sm">
                                 {navigationLinks.map((link) => (
                                     <li key={link.name}>
@@ -225,13 +225,14 @@ export default function Footer() {
 
                     {/* Newsletter */}
                     <div className="text-center">
-                        <h4 className="text-sm font-semibold mb-2 uppercase tracking-wider text-white">Stay Updated</h4>
-                        <p className="text-sm text-white/90 mb-2 leading-relaxed max-w-xs">
-                            Get exclusive offers, new collections, and event updates delivered to your inbox.
-                        </p>
-                        <div className="space-y-2 max-w-64 mx-auto">
+                        <h3 className="text-sm font-semibold mb-1 uppercase tracking-wider text-white">Stay Updated</h3>
+                        <div className="space-y-2 max-w-64 mb-3 mx-auto">
+                            <label htmlFor="email-desktop" className="text-sm text-white/90 mb-2 leading-relaxed max-w-xs></label">Get exclusive offers, new collections, and event updates delivered to your inbox.</label>
                             <input 
-                                type="email" 
+                                type="email-desktop"
+                                name="email-desktop"
+                                id="email-desktop"
+                                aria-label="email-desktop"
                                 placeholder="Enter your email" 
                                 className="w-full px-4 py-3 bg-blue-900/50 border border-blue-700/50 rounded-[50px] text-white placeholder-gray-400 text-sm focus:outline-none focus:border-blue-400 focus:bg-blue-900/70 transition-colors duration-150"
                             />
