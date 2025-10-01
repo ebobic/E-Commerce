@@ -14,7 +14,7 @@ export default function ProductCardImage({
     <div className="relative w-full h-[140px] sm:h-[220px] bg-blue-100">
       <Image
         src={imageUrl}
-        alt={title}
+        alt={""}
         fill
         className="object-contain"
       />
