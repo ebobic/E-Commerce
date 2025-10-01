@@ -1,19 +1,22 @@
-"use client"
+"use client";
 
 import { Product } from "@/lib/interfaces/products";
 import ProductsGrid from "./products-grid";
 
 interface SearchBarDropdownProps {
-    searchResults: Product[];
-    isLoading: boolean;
-    searchQuery: string;
+  searchResults: Product[];
+  isLoading: boolean;
+  searchQuery: string;
+  onItemClick?: () => void;
 }
 
-export default function SearchBarDropdown({ 
-    searchResults, 
-    isLoading, 
-    searchQuery 
+export default function SearchBarDropdown({
+  searchResults,
+  isLoading,
+  searchQuery,
+  onItemClick,
 }: SearchBarDropdownProps) {
+
     
     return (
         <ProductsGrid 
