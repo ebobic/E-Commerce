@@ -62,7 +62,7 @@ export default function ProductsGrid({
   const gridClasses = {
     featured: "grid gap-x-4 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5",
     products: "grid gap-x-4 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5",
-    search: "grid gap-2 grid-cols-2 sm:grid-cols-1 md:grid-cols-8 justify-items-stretch max-h-[900px] overflow-y-auto",
+    search: "grid gap-2 grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-items-stretch max-h-[900px] overflow-y-auto",
   };
 
   // Render product grid
