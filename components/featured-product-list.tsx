@@ -1,5 +1,5 @@
 import { fetchProductsData } from "@/lib/data/product-data";
-import ProductCard from "./product-card/product-card";
+import ProductsGrid from "./products-grid";
 import { Product } from "@/lib/interfaces/products";
 
 interface FeaturedProductListProps {
@@ -25,14 +25,8 @@ export default async function FeaturedProductList({ limit, skip, category, numbe
   }
 
   return (
-    <section className="flex flex-col relative items-center pt-10">
-      {/* Responsive grid: 2 cards mobile, 3 small, 4 medium, 5 large */}
-      {/* CSS overrides force ProductCard to be responsive within grid */}
-      <ul className="grid gap-x-4 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-stretch [&>*]:!w-full [&>*]:!max-w-none [&>*]:!mx-0">
-        {products.map((product: Product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </ul>
+    <section className="flex flex-col relative items-center max-w-7xl mx-auto py-8">
+      <ProductsGrid products={products} variant="featured" />
     </section>
   );
 }

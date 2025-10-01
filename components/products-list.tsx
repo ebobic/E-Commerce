@@ -3,7 +3,7 @@ import {
   fetchProductsData,
   fetchSearchProducts,
 } from "@/lib/data/product-data";
-import ProductCard from "./product-card/product-card";
+import ProductsGrid from "./products-grid";
 import { Product } from "@/lib/interfaces/products";
 import Pagination from "./pagination";
 
@@ -49,31 +49,21 @@ export default async function ProductsList({
 
   const totalPages = Math.ceil((totalCount || 0) / pageLimit);
 
-  // Check if there are no products to display
-  const hasProducts = products.length > 0;
+  // Determine empty state message
+  const emptyDescription = hasSearch || hasCategory
+    ? "Try adjusting your search or filter criteria."
+    : "There are no products available at the moment.";
 
   return (
     <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
       <Pagination currentPage={currentPage} totalPages={totalPages} />
 
-      {hasProducts ? (
-        <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
-          {products.map((product: Product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </ul>
-      ) : (
-        <div className="flex flex-col items-center justify-center py-20 px-4">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
-            No products found
-          </h2>
-          <p className="text-gray-500 text-center">
-            {hasSearch || hasCategory
-              ? "Try adjusting your search or filter criteria."
-              : "There are no products available at the moment."}
-          </p>
-        </div>
-      )}
+      <ProductsGrid
+        products={products}
+        variant="products"
+        emptyMessage="No products found"
+        emptyDescription={emptyDescription}
+      />
 
       <Pagination currentPage={currentPage} totalPages={totalPages} />
     </section>

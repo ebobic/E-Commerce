@@ -1,5 +1,5 @@
 import { fetchProductsByCategory } from "@/lib/data/product-data";
-import ProductCardNew from "./product-card/product-card-new";
+import ProductsGrid from "./products-grid";
 import { Product } from "@/lib/interfaces/products";
 
 export default async function ProductCategoryList({searchQuery}: {searchQuery: string}) {
@@ -9,11 +9,12 @@ export default async function ProductCategoryList({searchQuery}: {searchQuery: s
 
   return (
     <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
-      <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
-        {products.map((product: Product) => (
-          <ProductCardNew key={product.id} {...product} />
-        ))}
-      </ul>
+      <ProductsGrid 
+        products={products} 
+        variant="products"
+        emptyMessage="No products found in this category"
+        emptyDescription="Try browsing other categories or adjusting your filters."
+      />
     </section>
   );
 }
