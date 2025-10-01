@@ -9,7 +9,7 @@ export default function Hero() {
     <section
       className="h-[50vh] md:h-[70vh] bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 md:px-4 w-full"
       style={{
-        backgroundImage: "url('/hero/heroimage.png')",
+        backgroundImage: "url('/hero/heroimage.webp')",
       }}
     >
       {/* Content box with hero text and CTA */}

@@ -16,7 +16,7 @@ export default function BenefitsBanner() {
                     />
                 </div>
                 <div className="flex flex-col items-center text-center md:items-start">
-                    <h3 className="text-xs md:text-base font-semibold">Free Delivery</h3>
+                    <h2 className="text-xs md:text-base font-semibold">Free Delivery</h2>
                     <p className="text-xs">Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
@@ -33,7 +33,7 @@ export default function BenefitsBanner() {
                     />
                 </div>
                 <div className="flex flex-col items-center text-center md:items-start">
-                    <h3 className="text-xs md:text-base font-semibold">Support 24/7</h3>
+                    <h2 className="text-xs md:text-base font-semibold">Support 24/7</h2>
                     <p className="text-xs">Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>
@@ -50,7 +50,7 @@ export default function BenefitsBanner() {
                     />
                 </div>
                 <div className="flex flex-col items-center text-center md:items-start">
-                    <h3 className="text-xs md:text-base font-semibold">100% Authentic</h3>
+                    <h2 className="text-xs md:text-base font-semibold">100% Authentic</h2>
                     <p className="text-xs">Lorem ipsum dolor sit amet.</p>
                 </div>
             </div>

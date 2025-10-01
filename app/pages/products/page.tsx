@@ -9,7 +9,8 @@ export default async function Products({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   return (
-    <section>
+    <section >
+      
       <NextBreadcrumb
         homeElement={'Home'}
         activeClasses='text-blue-900!'
@@ -17,7 +18,8 @@ export default async function Products({
         listClasses='hover:underline mx-2'
         capitalizeLinks
       />
-        <div className="flex">
+        <div className="flex flex-col">
+          <h1 className="font-bold text-2xl lg:text-3xl text-neutral-800 m-auto pb-6">Products</h1>
           <CategoryList />
           <SearchBarProducts />
         </div>
