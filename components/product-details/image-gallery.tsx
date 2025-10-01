@@ -27,6 +27,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
                             ${selectedImage === img ? "border-blue-800 border-1" : "border-transparent"} 
                         `}
                     >
+                        <span className="hidden">View image</span>
                         <Image
                             src={img}
                             alt={`${title} thumbnail`}
