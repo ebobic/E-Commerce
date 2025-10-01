@@ -36,6 +36,7 @@ export default function Pagination({
           href={createPageUrl(currentPage - 1)}
           className="pointer-events-none opacity-50"
         >
+          <span className="hidden">previous page</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
@@ -49,6 +50,7 @@ export default function Pagination({
         </Link>
       ) : (
         <Link href={createPageUrl(currentPage - 1)}>
+          <span className="hidden">previous page</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
@@ -71,6 +73,7 @@ export default function Pagination({
           href={createPageUrl(currentPage + 1)}
           className="pointer-events-none opacity-50"
         >
+          <span className="hidden">next page</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
@@ -84,6 +87,7 @@ export default function Pagination({
         </Link>
       ) : (
         <Link href={createPageUrl(currentPage + 1)}>
+          <span className="hidden">next page</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
