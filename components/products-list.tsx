@@ -54,7 +54,6 @@ export default async function ProductsList({
 
   return (
     <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
 
       {hasProducts ? (
         <ul className="grid gap-x-10 gap-y-16 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 p-4 place-items-center">
