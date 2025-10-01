@@ -55,7 +55,7 @@ export default async function ProductsList({
     : "There are no products available at the moment.";
 
   return (
-    <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md">
+    <section className="flex flex-col relative bg-white items-center pt-10 rounded-md shadow-md max-w-[1280px] mx-auto">
 
       <ProductsGrid
         products={products}
