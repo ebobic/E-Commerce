@@ -5,19 +5,8 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { sendEmail } from "@/app/api/action"
 
-const initialState = {
-  success: "",
-  errors: {
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  }
-};
-
 function ContactForm() {
-    // const [state, formAction] = useActionState(sendEmail, initialState);
-    const [state, formAction] = useActionState(sendEmail, null);    // Från Roberts exempel
+  const [state, formAction] = useActionState(sendEmail, null);
 
   return (
     <Form action={formAction} className="grid">
@@ -30,9 +19,6 @@ function ContactForm() {
             aria-label="Contact Us - Name"
             placeholder="Your name"
           />
-            {state?.errors?.name && (
-              <p className="text-center text-sm text-red-500">{state.errors.name}</p>
-            )}
           <input
             type="email"
             className="px-2 rounded-lg bg-blue-100 sm:m-auto sm:w-7/10"
@@ -41,9 +27,6 @@ function ContactForm() {
             aria-label="Contact Us - E-mail"
             placeholder="Your e-mail"
           />
-            {state?.errors?.email && (
-              <p className="text-center text-sm text-red-500">{state.errors.email}</p>
-            )}
         </div>
         <input
           type="text"
@@ -53,9 +36,6 @@ function ContactForm() {
           aria-label="Contact Us - Subject"
           placeholder="Subject"
         />
-          {state?.errors?.subject && (
-            <p className="text-center text-sm text-red-500">{state.errors.subject}</p>
-          )}
         <textarea
           className="mt-2 px-2 rounded-lg bg-blue-100 m-auto w-9/10 sm:w-7/10"
           rows={5}
@@ -65,13 +45,22 @@ function ContactForm() {
           aria-label="Contact Us - Message"
           placeholder="Message"
         />
+        <div className="grid justify-self-center sm:w-7/10 sm:flex sm:items-center sm:justify-between">
+          <SubmitButton />
+          {state?.success && <p className="mt-3 p-2 opacity-70 border text-xs rounded-lg bg-green-100 text-green-600">Message sent successfully!</p>}
+        </div>
+          {state?.errors?.name && (
+            <p className="text-center text-sm text-red-500">{state.errors.name}</p>
+          )}
+          {state?.errors?.email && (
+            <p className="text-center text-sm text-red-500">{state.errors.email}</p>
+          )}
+          {state?.errors?.subject && (
+            <p className="text-center text-sm text-red-500">{state.errors.subject}</p>
+          )}
           {state?.errors?.message && (
             <p className="text-center text-sm text-red-500">{state.errors.message}</p>
           )}
-        <div className="grid justify-self-center sm:w-7/10 sm:flex sm:items-center sm:justify-between">
-        <SubmitButton />
-          {state?.success && <p className="mt-3 p-2 opacity-70 border text-xs rounded-lg bg-green-100 text-green-600">Message sent successfully!</p>}
-        </div>
       </Form>
   );
 }
