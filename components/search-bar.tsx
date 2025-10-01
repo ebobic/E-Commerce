@@ -227,6 +227,12 @@ export default function SearchBar({ onSearchToggle }: SearchBarProps) {
               searchResults={searchResults}
               isLoading={isLoading}
               searchQuery={searchQuery}
+              onItemClick={() => {
+                setSearchOpen(false);
+                setSearchQuery("");
+                setSearchResults([]);
+                onSearchToggle?.(false);
+              }}
             />
           </div>
         </div>
