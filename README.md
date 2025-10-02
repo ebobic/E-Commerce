@@ -1,8 +1,8 @@
 # 🛍️ E-handelsplattform i Next.js
 
-Kort beskrivning av projektet, lite om tekniker, vad syftet är.
-En minimalistisk e-handelsplattform byggd med **Next.js 15 App Router** och **TypeScript**. 
-Projektet gör det här och det här, innehåller detta...
+En minimalistisk e-handelsplattform byggd med **Next.js 15 App Router** och **TypeScript**.
+Projektet hämtar produkter och produktdata från extern backend för att simulera en e-handelsplattform.
+Syftet med projektet är att lära oss olika tekniker inom Next.js/React.
 
 ---
 
