@@ -43,7 +43,7 @@ Syftet är att träna på:
 - [Next.js 15 (App Router)](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [API](https://dummyjson.com/)
+- [DummyJSON - API](https://dummyjson.com/)
 - [WAVE](https://wave.webaim.org/)
 
 ---
@@ -119,23 +119,24 @@ npm run dev
 ## 🗓 Sprintplan
 ### Sprint 1 - Grundläggande struktur
 
+* Bestämde vilket API vi skulle använda
+* Tog fram design med hjälp av Figma
 * Satte upp Next.js-projektet
 * Skapade menyer & statiska sidor
 
 ### Sprint 2 - Produktsidan
 
-* Satte upp Next.js-projektet
-* Skapade menyer & statiska sidor
+* Satte upp produktsidan och ingående komponenter
+* Satte upp produktdetaljsidan och ingående komponenter
+* Jobbade med nya ideér/tillägg på tidigare komponenter
 
 ### Sprint 3 - Adminsidan
 
-* Satte upp Next.js-projektet
-* Skapade menyer & statiska sidor
+* Satte upp Adminsidan och tillhörande komponenter
 
 ### Sprint 4 - Finputs
 
-* Satte upp Next.js-projektet
-* Skapade menyer & statiska sidor
+* Förbättrade befintliga komponenter och finputsade på detaljer
 
 ---
 
