@@ -7,18 +7,18 @@ Syftet med projektet är att lära oss olika tekniker inom Next.js/React.
 ---
 
 ## 📑 Innehåll
-- 📖 [Om projektet](#-om-projektet)
-- ✨ [Funktioner](#-funktioner)
-- :hammer: [Teknologier](#-teknologier)
-- ⚙️ [Installation](#-installation)
-- 🚀 [Användning](#-användning)
-- 📂 [Projektstruktur](#-projektstruktur)
-- 📈 [Arbetsflöde](#-arbetsflöde)
-- 🗓 [Sprintplan](#-sprintplan)
-- 🤝 [Bidra](#-bidra)
-- 📚 [Lärdomar](#-lärdomar)
-- 📜 [Licens](#-licens)
-- ✍️ [Kontakt](#-kontakt)
+- [Om projektet](#-om-projektet)
+- [Funktioner](#-funktioner)
+- [Teknologier](#-teknologier)
+- [Installation](#-installation)
+- [Användning](#-användning)
+- [Projektstruktur](#-projektstruktur)
+- [Arbetsflöde](#-arbetsflöde)
+- [Sprintplan](#-sprintplan)
+- [Bidra](#-bidra)
+- [Lärdomar](#-lärdomar)
+- [Licens](#-licens)
+- [Kontakt](#-kontakt)
 
 ---
 
