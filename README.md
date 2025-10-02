@@ -9,7 +9,7 @@ Syftet med projektet är att lära oss olika tekniker inom Next.js/React.
 ## 📑 Innehåll
 - 📖 [Om projektet](#-om-projektet)
 - ✨ [Funktioner](#-funktioner)
-- 🛠 [Teknologier](#-teknologier)
+- :hammer: [Teknologier](#-teknologier)
 - ⚙️ [Installation](#-installation)
 - 🚀 [Användning](#-användning)
 - 📂 [Projektstruktur](#-projektstruktur)
@@ -19,7 +19,6 @@ Syftet med projektet är att lära oss olika tekniker inom Next.js/React.
 - 📚 [Lärdomar](#-lärdomar)
 - 📜 [Licens](#-licens)
 - ✍️ [Kontakt](#-kontakt)
-
 
 ---
 
@@ -42,9 +41,9 @@ Syftet är att träna på:
 
 ## 🛠 Teknologier
 - [Next.js 15 (App Router)](https://nextjs.org/)
-- [TypeScript] (https://www.typescriptlang.org/)
-- [Tailwind CSS] (https://tailwindcss.com/)
-- [API] (https://dummyjson.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [API](https://dummyjson.com/)
 - [WAVE](https://wave.webaim.org/)
 
 ---
