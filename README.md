@@ -167,7 +167,13 @@ Detta projekt är utvecklat i utbildningssyfte och är inte avsett för produkti
 ## ✍️ Kontakt
 Ev. kontaktuppgifter
 
+---
 
+## Bilder
+![alt text](https://github.com/VladZGarcia/ecommersepage/blob/dev/public/images/1.jpg "Startsida")
+![alt text](https://github.com/VladZGarcia/ecommersepage/blob/dev/public/images/2.jpg "Featured Products")
+![alt text](https://github.com/VladZGarcia/ecommersepage/blob/dev/public/images/3.jpg "Contact + Footer")
+![alt text](https://github.com/VladZGarcia/ecommersepage/blob/dev/public/images/4.jpg "Product Detail")
 
 ---
 
