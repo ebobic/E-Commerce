@@ -142,6 +142,37 @@ npm run dev
 
 ---
 
+
+## 📚 Egna reflektioner & lärdomar
+
+### Primärt bidrag till arbetet: Sökfunktion, responsiva produktkort och admin-panel.
+
+### Viktigaste funktionaliteterna som jag ansvarade för:
+
+### Sökfunktion – Implementerade search-bar.tsx med dropdown och API-integration. Använde React Hooks (useState) för state, Client Components för interaktivitet och Tailwind CSS för en responsiv design.
+
+Responsiva produktkort – Modulära komponenter (product-card.tsx, product-card-image.tsx, product-card-details.tsx, product-card-button.tsx) med Tailwind CSS Grid för responsiv layout (2 kort på mobil, 3+ på större skärmar).
+
+### Admin-panel – Grundstrukur & layout för /admin med delete-knappar och loading states. Använde Next.js App Router, Server Actions för delete-operationer och TypeScript för typning.
+
+### Tekniker och komponenter jag använde mig av:
+
+React/Next.js – Client Components för interaktivitet, Server Actions för backend-operationer
+Tailwind CSS – Responsiv design med breakpoints (sm:, md:, lg:)
+TypeScript – Typning av komponenter, props och API-responser
+React Hooks – useState för state-hantering och loading states
+API-integration – Fetch-anrop för produktsökning och delete-operationer
+
+
+### Vad hade jag kunnat förbättra?
+
+Sökfunktionen i navbaren – Debouncing, caching och prestandaoptimering
+Produktkorten – Lazy loading, bildoptimering och bundle size-reduktion
+
+Sammanfattat, så hade jag velat fokusera mer på prestanda och optimering av komponenterna för att förbättra laddningstider och användarupplevelse.
+
+---
+
 ## 🤝 Bidra
 Vill du bidra?
 
@@ -149,15 +180,6 @@ Vill du bidra?
 2. Skapa en feature-branch (`git checkout ......`)
 3. Commit & push
 4. Skicka en Pull Request
-
----
-
-## 📚 Lärdomar
-* Skillnaden mellan Server & Client Components i Next.js
-* Agila metoder
-* API
-* Responsivitet
-* Github feature branches
 
 ---
 
