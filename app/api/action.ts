@@ -10,7 +10,7 @@ const contactFormSchema = z.object({
 });
 
 // Server Action
-export async function sendEmail(prevState: any, formData: FormData) {
+export async function sendEmail(prevState: { errors?: { name?: string[]; email?: string[]; subject?: string[]; message?: string[] }; success?: string } | null, formData: FormData) {
   // Convert the raw formData into a regular JavaScript object
   const contactFormData = Object.fromEntries(formData);
   // Validate contactFormData using the safeParse() method

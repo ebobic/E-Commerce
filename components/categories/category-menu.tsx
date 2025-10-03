@@ -4,7 +4,7 @@ type CategoryMenuProps = {
     setMenuOpen: (open: boolean) => void;
 }
 
-const categoryArray = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"]
+// const categoryArray = ["beauty", "fragrances", "furniture", "groceries", "home-decoration", "kitchen-accessories", "laptops", "mens-shirts", "mens-shoes", "mens-watches", "mobile-accessories", "motorcycle", "skin-care", "smartphones", "sports-accessories", "sunglasses", "tablets", "tops", "vehicle", "womens-bags", "womens-dresses", "womens-jewellery", "womens-shoes", "womens-watches"]
 
 export default function CategoryMenu({setMenuOpen}: CategoryMenuProps) {
     return (
@@ -13,7 +13,7 @@ export default function CategoryMenu({setMenuOpen}: CategoryMenuProps) {
             <li
                 onClick={() => setMenuOpen(false)}
             >
-                <CategoryLink {...categoryArray} />
+                <CategoryLink />
             </li>
         </ul>
     )

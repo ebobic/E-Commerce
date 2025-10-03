@@ -6,7 +6,7 @@ import { useFormStatus } from "react-dom";
 import { sendEmail } from "@/app/api/action"
 
 function ContactForm() {
-  const [state, formAction] = useActionState(sendEmail, null);
+  const [state, formAction] = useActionState(sendEmail, { errors: { name: undefined, email: undefined, subject: undefined, message: undefined } });
 
   return (
     <Form action={formAction} className="grid">

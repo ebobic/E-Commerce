@@ -9,7 +9,7 @@ interface ImageGalleryProps {
     title: string
 }
 
-export default function ImageGallery({ images, title }: ImageGalleryProps) {
+export default function ImageGallery({ images }: ImageGalleryProps) {
     const imagesToRender = images.slice(0, 3)  // Only take the first 3 images from the array (if more are passed in)
     const [selectedImage, setSelectedImage] = useState(imagesToRender[0]);  // Keeping track of which image is currently selected, default is first in the list
 

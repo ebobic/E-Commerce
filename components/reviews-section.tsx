@@ -9,7 +9,7 @@ interface ReviewsSectionProps {
   productTitle: string;
 }
 
-export default function ReviewsSection({ reviews, productTitle }: ReviewsSectionProps) {
+export default function ReviewsSection({ reviews }: ReviewsSectionProps) {
   const totalReviews = reviews.length;
   const [showReviews, setShowReviews] = useState(false);
 

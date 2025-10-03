@@ -16,7 +16,7 @@ export default function ProductCreate() {
     discountPercentage: 10,
     rating: 4.5,
     stock: 50,
-    tags: [] as any[],
+    tags: [] as string[],
     brand: "",
     sku: "",
     weight: "",
@@ -37,10 +37,10 @@ export default function ProductCreate() {
     thumbnail: "https://example.com/thumbnail.jpg",
   })
 
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<{ name: string }[]>([]);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -64,7 +64,7 @@ export default function ProductCreate() {
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = async () => {
     setIsLoading(true);
     setError(null);
     try {

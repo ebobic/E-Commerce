@@ -5,7 +5,6 @@ interface ProductCardHeaderProps {
 
 export default function ProductCardHeader({
   title,
-  price,
 }: ProductCardHeaderProps) {
   return (
     <div className="flex-1">

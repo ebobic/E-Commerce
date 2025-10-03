@@ -1,5 +1,4 @@
 import { Product } from "@/lib/interfaces/products";
-import ProductImage from "./product-image";
 import ProductHeader from "./product-header";
 import ProductPriceAndRating from "./product-price-rating";
 import ProductDescription from "./product-description";
@@ -14,7 +13,7 @@ interface ProductDetailsCardProps {
 export default async function ProductDetailsCard({
   product,
 }: ProductDetailsCardProps) {
-  const imageUrl = product.images[0] || product.thumbnail; // Fallback to thumbnail
+  // const imageUrl = product.images[0] || product.thumbnail; // Fallback to thumbnail
   const reviewCount = product.reviews?.length || 0;
 
   return (

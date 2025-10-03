@@ -11,7 +11,7 @@ interface FeaturedProductListProps {
 }
 
 
-export default async function FeaturedProductList({ limit, skip, category, number, id }: FeaturedProductListProps) {
+export default async function FeaturedProductList({ limit, skip, category, id }: FeaturedProductListProps) {
 
   const response = await fetchProductsData(limit, skip);
   let products: Product[] = response.products || [];

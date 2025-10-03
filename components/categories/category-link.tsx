@@ -30,7 +30,7 @@ const categoryArray = [
   "womens-watches",
 ];
 
-export default function CategoryLink(category: string[]) {    
+export default function CategoryLink() {    
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();

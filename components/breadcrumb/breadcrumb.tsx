@@ -3,7 +3,7 @@
 import React, { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { handleBreadcrumbSegments } from "./handle-breadcrumb-pathname";
+import { useBreadcrumbSegments } from "./handle-breadcrumb-pathname";
 
 type TBreadCrumbProps = {
   homeElement: ReactNode;
@@ -28,7 +28,7 @@ const NextBreadcrumb = ({
         .filter((seg) => seg !== "pages" && seg !== "admin");
 
   // Resolve display labels (IDs -> product titles)
-  const displaySegments = handleBreadcrumbSegments(paths);
+  const displaySegments = useBreadcrumbSegments(paths);
 
   return (
     <nav className="px-4">
@@ -51,12 +51,12 @@ const NextBreadcrumb = ({
           </Link>
         </li>
         {displaySegments.map((link, index) => {
-          let href = `/pages/${pathNames.slice(0, index + 1).join("/")}`;
-          let itemClasses =
+          const href = `/pages/${pathNames.slice(0, index + 1).join("/")}`;
+          const itemClasses =
             paths === href ? `${listClasses} ${activeClasses}` : listClasses;
           // Use displaySegments for label, fallback to original link
-            let label = displaySegments[index] ?? link;
-          let itemLink = capitalizeLinks
+          const label = displaySegments[index] ?? link;
+          const itemLink = capitalizeLinks
             ? label[0].toUpperCase() + label.slice(1, label.length)
             : label;
 

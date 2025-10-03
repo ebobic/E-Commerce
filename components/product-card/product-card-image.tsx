@@ -7,7 +7,6 @@ interface ProductCardImageProps {
 
 export default function ProductCardImage({
   imageUrl,
-  title,
 }: ProductCardImageProps) {
   // Responsive image: smaller on mobile (140px), full size on desktop (220px)
   return (

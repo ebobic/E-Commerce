@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchProductById } from "@/lib/data/product-data";
 
 // Custom hook: resolves numeric segments (ids) to product titles
-export function handleBreadcrumbSegments(paths: string): string[] {
+export function useBreadcrumbSegments(paths: string): string[] {
   const rawSegments = paths.split("/").filter((p) => p);
   const pathNames = rawSegments.filter(
     (seg) => seg !== "pages" && seg !== "admin"
@@ -34,7 +34,7 @@ export function handleBreadcrumbSegments(paths: string): string[] {
     return () => {
       isMounted = false;
     };
-  }, [paths]);
+  }, [paths, pathNames]);
 
   return resolved;
 }

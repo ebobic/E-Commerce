@@ -16,7 +16,7 @@ export default function AdminPage() {
       try {
         const { products } = await fetchProductsData(30, 0);
         setProducts(products);
-      } catch (err) {
+      } catch {
         setError("Failed to load products");
       }
     };

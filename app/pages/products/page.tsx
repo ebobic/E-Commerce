@@ -2,6 +2,7 @@ import SearchBarProducts from "@/components/search-bar-products"
 import ProductsList from "@/components/products-list"
 import CategoryList from "@/components/categories/category-list"
 import NextBreadcrumb from "@/components/breadcrumb/breadcrumb";
+import { Suspense } from "react";
 
 export default async function Products({
   searchParams,
@@ -21,9 +22,13 @@ export default async function Products({
         <div className="flex flex-col">
           <h1 className="font-bold text-2xl lg:text-3xl text-neutral-800 m-auto pb-6">Products</h1>
           <CategoryList />
-          <SearchBarProducts />
+          <Suspense fallback={<div>Loading search...</div>}>
+            <SearchBarProducts />
+          </Suspense>
         </div>
-        <ProductsList searchParams={searchParams} />
+        <Suspense fallback={<div>Loading products...</div>}>
+          <ProductsList searchParams={searchParams} />
+        </Suspense>
     </section>
   );
 }

@@ -10,7 +10,6 @@ type NavBarIconProps = {
 };
 
 export default function NavBarIcons({
-  searchOpen,
   setSearchOpen,
   menuOpen,
   setMenuOpen,
