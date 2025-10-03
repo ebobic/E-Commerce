@@ -149,11 +149,14 @@ npm run dev
 
 ### Viktigaste funktionaliteterna som jag ansvarade för:
 
-### Sökfunktion – Implementerade search-bar.tsx med dropdown och API-integration. Använde React Hooks (useState) för state, Client Components för interaktivitet och Tailwind CSS för en responsiv design.
+### Sökfunktion – Implementerade search-bar.tsx med dropdown och API-integration. 
+Använde React Hooks (useState) för state, Client Components för interaktivitet och Tailwind CSS för en responsiv design.
 
-Responsiva produktkort – Modulära komponenter (product-card.tsx, product-card-image.tsx, product-card-details.tsx, product-card-button.tsx) med Tailwind CSS Grid för responsiv layout (2 kort på mobil, 3+ på större skärmar).
+### Responsiva produktkort – 
+Modulära komponenter (product-card.tsx, product-card-image.tsx, product-card-details.tsx, product-card-button.tsx) med Tailwind CSS Grid för responsiv layout (2 kort på mobil, 3+ på större skärmar).
 
-### Admin-panel – Grundstrukur & layout för /admin med delete-knappar och loading states. Använde Next.js App Router, Server Actions för delete-operationer och TypeScript för typning.
+### Admin-panel – Grundstrukur & layout för /admin med delete-knappar och loading states. 
+Använde Next.js App Router, Server Actions för delete-operationer och TypeScript för typning.
 
 ### Tekniker och komponenter jag använde mig av:
 
