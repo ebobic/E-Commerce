@@ -1,7 +1,9 @@
-import NavBar from "@/components/nav-bar";
+import NavBar from "@/components/Nav/nav-bar";
+import Footer from "@/components/footer";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const montserratSans = Montserrat({
   variable: "--font-montserrat-sans",
@@ -22,11 +24,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${montserratSans.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <header className="content-grid">
+        
+        <header className="">
           <NavBar />
         </header>
-        {children}
+        <main className="pt-24">{children}</main>
+        <Toaster richColors position="bottom-center" />
+        <Footer />
       </body>
     </html>
   );
